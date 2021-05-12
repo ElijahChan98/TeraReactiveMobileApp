@@ -1,0 +1,790 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CFAE4EA12643F24F007C6BCF /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4E9F2643F24F007C6BCF /* UpdateProfileViewController.swift */; };
+		CFAE4EA22643F24F007C6BCF /* UpdateProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFAE4EA02643F24F007C6BCF /* UpdateProfileViewController.xib */; };
+		CFAE4EA52644F40D007C6BCF /* UpdateCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4EA32644F40D007C6BCF /* UpdateCompletedViewController.swift */; };
+		CFAE4EA62644F40D007C6BCF /* UpdateCompletedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFAE4EA42644F40D007C6BCF /* UpdateCompletedViewController.xib */; };
+		CFAE4EA92644F987007C6BCF /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4EA82644F987007C6BCF /* RequestManager.swift */; };
+		CFAE4EAC2644FBCC007C6BCF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4EAB2644FBCC007C6BCF /* Constants.swift */; };
+		CFAE4EAE264511B7007C6BCF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4EAD264511B7007C6BCF /* User.swift */; };
+		CFAE4EB02645147C007C6BCF /* CodableObjectFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4EAF2645147C007C6BCF /* CodableObjectFactory.swift */; };
+		CFAE4EB2264518ED007C6BCF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4EB1264518ED007C6BCF /* LoginViewModel.swift */; };
+		CFAE4EB426451E10007C6BCF /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4EB326451E0F007C6BCF /* Utilities.swift */; };
+		CFAE4EB626453EEF007C6BCF /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4EB526453EEF007C6BCF /* ProfileViewModel.swift */; };
+		CFAE4EB8264910EC007C6BCF /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4EB7264910EC007C6BCF /* UpdateProfileViewModel.swift */; };
+		CFAE4EBB264917FA007C6BCF /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4EBA264917FA007C6BCF /* Coordinator.swift */; };
+		CFBA7E4B2643CF9100FBAA0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA7E4A2643CF9100FBAA0D /* AppDelegate.swift */; };
+		CFBA7E4D2643CF9100FBAA0D /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA7E4C2643CF9100FBAA0D /* DocumentBrowserViewController.swift */; };
+		CFBA7E4F2643CF9100FBAA0D /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA7E4E2643CF9100FBAA0D /* DocumentViewController.swift */; };
+		CFBA7E512643CF9100FBAA0D /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA7E502643CF9100FBAA0D /* Document.swift */; };
+		CFBA7E542643CF9100FBAA0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFBA7E522643CF9100FBAA0D /* Main.storyboard */; };
+		CFBA7E562643CF9200FBAA0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFBA7E552643CF9200FBAA0D /* Assets.xcassets */; };
+		CFBA7E592643CF9200FBAA0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFBA7E572643CF9200FBAA0D /* LaunchScreen.storyboard */; };
+		CFBA7E642643CF9300FBAA0D /* TeraSystemsExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA7E632643CF9300FBAA0D /* TeraSystemsExerciseTests.swift */; };
+		CFBA7E6F2643CF9300FBAA0D /* TeraSystemsExerciseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA7E6E2643CF9300FBAA0D /* TeraSystemsExerciseUITests.swift */; };
+		CFBA7E822643D20C00FBAA0D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA7E802643D20C00FBAA0D /* LoginViewController.swift */; };
+		CFBA7E832643D20C00FBAA0D /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFBA7E812643D20C00FBAA0D /* LoginViewController.xib */; };
+		CFBA7E862643E4CB00FBAA0D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA7E842643E4CB00FBAA0D /* ProfileViewController.swift */; };
+		CFBA7E872643E4CB00FBAA0D /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFBA7E852643E4CB00FBAA0D /* ProfileViewController.xib */; };
+		E9EAEA9F1BD3995FE040A90D /* Pods_TeraSystemsExercise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC31EE420B98564D252EE8B /* Pods_TeraSystemsExercise.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CFBA7E602643CF9300FBAA0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CFBA7E3F2643CF9100FBAA0D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CFBA7E462643CF9100FBAA0D;
+			remoteInfo = TeraSystemsExercise;
+		};
+		CFBA7E6B2643CF9300FBAA0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CFBA7E3F2643CF9100FBAA0D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CFBA7E462643CF9100FBAA0D;
+			remoteInfo = TeraSystemsExercise;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1BC31EE420B98564D252EE8B /* Pods_TeraSystemsExercise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeraSystemsExercise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8BB62458CF1F1F3CC4F2E49 /* Pods-TeraSystemsExercise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeraSystemsExercise.release.xcconfig"; path = "Target Support Files/Pods-TeraSystemsExercise/Pods-TeraSystemsExercise.release.xcconfig"; sourceTree = "<group>"; };
+		CFAE4E9F2643F24F007C6BCF /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
+		CFAE4EA02643F24F007C6BCF /* UpdateProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateProfileViewController.xib; sourceTree = "<group>"; };
+		CFAE4EA32644F40D007C6BCF /* UpdateCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCompletedViewController.swift; sourceTree = "<group>"; };
+		CFAE4EA42644F40D007C6BCF /* UpdateCompletedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateCompletedViewController.xib; sourceTree = "<group>"; };
+		CFAE4EA82644F987007C6BCF /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		CFAE4EAB2644FBCC007C6BCF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CFAE4EAD264511B7007C6BCF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CFAE4EAF2645147C007C6BCF /* CodableObjectFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableObjectFactory.swift; sourceTree = "<group>"; };
+		CFAE4EB1264518ED007C6BCF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		CFAE4EB326451E0F007C6BCF /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		CFAE4EB526453EEF007C6BCF /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		CFAE4EB7264910EC007C6BCF /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
+		CFAE4EBA264917FA007C6BCF /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		CFBA7E472643CF9100FBAA0D /* TeraSystemsExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeraSystemsExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFBA7E4A2643CF9100FBAA0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CFBA7E4C2643CF9100FBAA0D /* DocumentBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewController.swift; sourceTree = "<group>"; };
+		CFBA7E4E2643CF9100FBAA0D /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
+		CFBA7E502643CF9100FBAA0D /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		CFBA7E532643CF9100FBAA0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CFBA7E552643CF9200FBAA0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CFBA7E582643CF9200FBAA0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CFBA7E5A2643CF9200FBAA0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFBA7E5F2643CF9300FBAA0D /* TeraSystemsExerciseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeraSystemsExerciseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFBA7E632643CF9300FBAA0D /* TeraSystemsExerciseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeraSystemsExerciseTests.swift; sourceTree = "<group>"; };
+		CFBA7E652643CF9300FBAA0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFBA7E6A2643CF9300FBAA0D /* TeraSystemsExerciseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeraSystemsExerciseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFBA7E6E2643CF9300FBAA0D /* TeraSystemsExerciseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeraSystemsExerciseUITests.swift; sourceTree = "<group>"; };
+		CFBA7E702643CF9300FBAA0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFBA7E802643D20C00FBAA0D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CFBA7E812643D20C00FBAA0D /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		CFBA7E842643E4CB00FBAA0D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		CFBA7E852643E4CB00FBAA0D /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		D26A9600BC034DBF4500C2D9 /* Pods-TeraSystemsExercise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeraSystemsExercise.debug.xcconfig"; path = "Target Support Files/Pods-TeraSystemsExercise/Pods-TeraSystemsExercise.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CFBA7E442643CF9100FBAA0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9EAEA9F1BD3995FE040A90D /* Pods_TeraSystemsExercise.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFBA7E5C2643CF9300FBAA0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFBA7E672643CF9300FBAA0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4F1885AB3E2471E42C49CA01 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D26A9600BC034DBF4500C2D9 /* Pods-TeraSystemsExercise.debug.xcconfig */,
+				C8BB62458CF1F1F3CC4F2E49 /* Pods-TeraSystemsExercise.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8E13AD7E45023A1B60E83BF3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1BC31EE420B98564D252EE8B /* Pods_TeraSystemsExercise.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CFAE4EA72644F96A007C6BCF /* Network Manager */ = {
+			isa = PBXGroup;
+			children = (
+				CFAE4EA82644F987007C6BCF /* RequestManager.swift */,
+			);
+			path = "Network Manager";
+			sourceTree = "<group>";
+		};
+		CFAE4EAA2644FBBF007C6BCF /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				CFAE4EAB2644FBCC007C6BCF /* Constants.swift */,
+				CFAE4EAF2645147C007C6BCF /* CodableObjectFactory.swift */,
+				CFAE4EB326451E0F007C6BCF /* Utilities.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		CFAE4EB9264917ED007C6BCF /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CFAE4EBA264917FA007C6BCF /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		CFBA7E3E2643CF9100FBAA0D = {
+			isa = PBXGroup;
+			children = (
+				CFBA7E492643CF9100FBAA0D /* TeraSystemsExercise */,
+				CFBA7E622643CF9300FBAA0D /* TeraSystemsExerciseTests */,
+				CFBA7E6D2643CF9300FBAA0D /* TeraSystemsExerciseUITests */,
+				CFBA7E482643CF9100FBAA0D /* Products */,
+				4F1885AB3E2471E42C49CA01 /* Pods */,
+				8E13AD7E45023A1B60E83BF3 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CFBA7E482643CF9100FBAA0D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CFBA7E472643CF9100FBAA0D /* TeraSystemsExercise.app */,
+				CFBA7E5F2643CF9300FBAA0D /* TeraSystemsExerciseTests.xctest */,
+				CFBA7E6A2643CF9300FBAA0D /* TeraSystemsExerciseUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CFBA7E492643CF9100FBAA0D /* TeraSystemsExercise */ = {
+			isa = PBXGroup;
+			children = (
+				CFAE4EB9264917ED007C6BCF /* Coordinator */,
+				CFAE4EAA2644FBBF007C6BCF /* Misc */,
+				CFAE4EA72644F96A007C6BCF /* Network Manager */,
+				CFBA7E7F2643D1EA00FBAA0D /* ViewModel */,
+				CFBA7E7E2643D1E600FBAA0D /* Model */,
+				CFBA7E7D2643D1D900FBAA0D /* View Controller */,
+				CFBA7E7C2643D07000FBAA0D /* Supporting Files */,
+				CFBA7E5A2643CF9200FBAA0D /* Info.plist */,
+			);
+			path = TeraSystemsExercise;
+			sourceTree = "<group>";
+		};
+		CFBA7E622643CF9300FBAA0D /* TeraSystemsExerciseTests */ = {
+			isa = PBXGroup;
+			children = (
+				CFBA7E632643CF9300FBAA0D /* TeraSystemsExerciseTests.swift */,
+				CFBA7E652643CF9300FBAA0D /* Info.plist */,
+			);
+			path = TeraSystemsExerciseTests;
+			sourceTree = "<group>";
+		};
+		CFBA7E6D2643CF9300FBAA0D /* TeraSystemsExerciseUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CFBA7E6E2643CF9300FBAA0D /* TeraSystemsExerciseUITests.swift */,
+				CFBA7E702643CF9300FBAA0D /* Info.plist */,
+			);
+			path = TeraSystemsExerciseUITests;
+			sourceTree = "<group>";
+		};
+		CFBA7E7C2643D07000FBAA0D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CFBA7E4A2643CF9100FBAA0D /* AppDelegate.swift */,
+				CFBA7E4C2643CF9100FBAA0D /* DocumentBrowserViewController.swift */,
+				CFBA7E4E2643CF9100FBAA0D /* DocumentViewController.swift */,
+				CFBA7E502643CF9100FBAA0D /* Document.swift */,
+				CFBA7E552643CF9200FBAA0D /* Assets.xcassets */,
+				CFBA7E522643CF9100FBAA0D /* Main.storyboard */,
+				CFBA7E572643CF9200FBAA0D /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CFBA7E7D2643D1D900FBAA0D /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CFBA7E802643D20C00FBAA0D /* LoginViewController.swift */,
+				CFBA7E812643D20C00FBAA0D /* LoginViewController.xib */,
+				CFBA7E842643E4CB00FBAA0D /* ProfileViewController.swift */,
+				CFBA7E852643E4CB00FBAA0D /* ProfileViewController.xib */,
+				CFAE4E9F2643F24F007C6BCF /* UpdateProfileViewController.swift */,
+				CFAE4EA02643F24F007C6BCF /* UpdateProfileViewController.xib */,
+				CFAE4EA32644F40D007C6BCF /* UpdateCompletedViewController.swift */,
+				CFAE4EA42644F40D007C6BCF /* UpdateCompletedViewController.xib */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		CFBA7E7E2643D1E600FBAA0D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CFAE4EAD264511B7007C6BCF /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CFBA7E7F2643D1EA00FBAA0D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CFAE4EB1264518ED007C6BCF /* LoginViewModel.swift */,
+				CFAE4EB526453EEF007C6BCF /* ProfileViewModel.swift */,
+				CFAE4EB7264910EC007C6BCF /* UpdateProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CFBA7E462643CF9100FBAA0D /* TeraSystemsExercise */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFBA7E732643CF9300FBAA0D /* Build configuration list for PBXNativeTarget "TeraSystemsExercise" */;
+			buildPhases = (
+				824208435C698E041B426106 /* [CP] Check Pods Manifest.lock */,
+				CFBA7E432643CF9100FBAA0D /* Sources */,
+				CFBA7E442643CF9100FBAA0D /* Frameworks */,
+				CFBA7E452643CF9100FBAA0D /* Resources */,
+				DF519692C7A27A7E1D624C67 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TeraSystemsExercise;
+			productName = TeraSystemsExercise;
+			productReference = CFBA7E472643CF9100FBAA0D /* TeraSystemsExercise.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CFBA7E5E2643CF9300FBAA0D /* TeraSystemsExerciseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFBA7E762643CF9300FBAA0D /* Build configuration list for PBXNativeTarget "TeraSystemsExerciseTests" */;
+			buildPhases = (
+				CFBA7E5B2643CF9300FBAA0D /* Sources */,
+				CFBA7E5C2643CF9300FBAA0D /* Frameworks */,
+				CFBA7E5D2643CF9300FBAA0D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CFBA7E612643CF9300FBAA0D /* PBXTargetDependency */,
+			);
+			name = TeraSystemsExerciseTests;
+			productName = TeraSystemsExerciseTests;
+			productReference = CFBA7E5F2643CF9300FBAA0D /* TeraSystemsExerciseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CFBA7E692643CF9300FBAA0D /* TeraSystemsExerciseUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFBA7E792643CF9300FBAA0D /* Build configuration list for PBXNativeTarget "TeraSystemsExerciseUITests" */;
+			buildPhases = (
+				CFBA7E662643CF9300FBAA0D /* Sources */,
+				CFBA7E672643CF9300FBAA0D /* Frameworks */,
+				CFBA7E682643CF9300FBAA0D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CFBA7E6C2643CF9300FBAA0D /* PBXTargetDependency */,
+			);
+			name = TeraSystemsExerciseUITests;
+			productName = TeraSystemsExerciseUITests;
+			productReference = CFBA7E6A2643CF9300FBAA0D /* TeraSystemsExerciseUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CFBA7E3F2643CF9100FBAA0D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					CFBA7E462643CF9100FBAA0D = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					CFBA7E5E2643CF9300FBAA0D = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = CFBA7E462643CF9100FBAA0D;
+					};
+					CFBA7E692643CF9300FBAA0D = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = CFBA7E462643CF9100FBAA0D;
+					};
+				};
+			};
+			buildConfigurationList = CFBA7E422643CF9100FBAA0D /* Build configuration list for PBXProject "TeraSystemsExercise" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CFBA7E3E2643CF9100FBAA0D;
+			productRefGroup = CFBA7E482643CF9100FBAA0D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CFBA7E462643CF9100FBAA0D /* TeraSystemsExercise */,
+				CFBA7E5E2643CF9300FBAA0D /* TeraSystemsExerciseTests */,
+				CFBA7E692643CF9300FBAA0D /* TeraSystemsExerciseUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CFBA7E452643CF9100FBAA0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFBA7E832643D20C00FBAA0D /* LoginViewController.xib in Resources */,
+				CFAE4EA22643F24F007C6BCF /* UpdateProfileViewController.xib in Resources */,
+				CFBA7E592643CF9200FBAA0D /* LaunchScreen.storyboard in Resources */,
+				CFBA7E562643CF9200FBAA0D /* Assets.xcassets in Resources */,
+				CFBA7E872643E4CB00FBAA0D /* ProfileViewController.xib in Resources */,
+				CFBA7E542643CF9100FBAA0D /* Main.storyboard in Resources */,
+				CFAE4EA62644F40D007C6BCF /* UpdateCompletedViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFBA7E5D2643CF9300FBAA0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFBA7E682643CF9300FBAA0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		824208435C698E041B426106 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TeraSystemsExercise-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF519692C7A27A7E1D624C67 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TeraSystemsExercise/Pods-TeraSystemsExercise-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TeraSystemsExercise/Pods-TeraSystemsExercise-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TeraSystemsExercise/Pods-TeraSystemsExercise-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CFBA7E432643CF9100FBAA0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFBA7E862643E4CB00FBAA0D /* ProfileViewController.swift in Sources */,
+				CFBA7E512643CF9100FBAA0D /* Document.swift in Sources */,
+				CFAE4EB426451E10007C6BCF /* Utilities.swift in Sources */,
+				CFAE4EB02645147C007C6BCF /* CodableObjectFactory.swift in Sources */,
+				CFBA7E4F2643CF9100FBAA0D /* DocumentViewController.swift in Sources */,
+				CFBA7E4D2643CF9100FBAA0D /* DocumentBrowserViewController.swift in Sources */,
+				CFAE4EA12643F24F007C6BCF /* UpdateProfileViewController.swift in Sources */,
+				CFAE4EB8264910EC007C6BCF /* UpdateProfileViewModel.swift in Sources */,
+				CFAE4EAC2644FBCC007C6BCF /* Constants.swift in Sources */,
+				CFAE4EA52644F40D007C6BCF /* UpdateCompletedViewController.swift in Sources */,
+				CFAE4EBB264917FA007C6BCF /* Coordinator.swift in Sources */,
+				CFAE4EB626453EEF007C6BCF /* ProfileViewModel.swift in Sources */,
+				CFAE4EB2264518ED007C6BCF /* LoginViewModel.swift in Sources */,
+				CFAE4EA92644F987007C6BCF /* RequestManager.swift in Sources */,
+				CFBA7E822643D20C00FBAA0D /* LoginViewController.swift in Sources */,
+				CFBA7E4B2643CF9100FBAA0D /* AppDelegate.swift in Sources */,
+				CFAE4EAE264511B7007C6BCF /* User.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFBA7E5B2643CF9300FBAA0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFBA7E642643CF9300FBAA0D /* TeraSystemsExerciseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFBA7E662643CF9300FBAA0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFBA7E6F2643CF9300FBAA0D /* TeraSystemsExerciseUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CFBA7E612643CF9300FBAA0D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CFBA7E462643CF9100FBAA0D /* TeraSystemsExercise */;
+			targetProxy = CFBA7E602643CF9300FBAA0D /* PBXContainerItemProxy */;
+		};
+		CFBA7E6C2643CF9300FBAA0D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CFBA7E462643CF9100FBAA0D /* TeraSystemsExercise */;
+			targetProxy = CFBA7E6B2643CF9300FBAA0D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CFBA7E522643CF9100FBAA0D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFBA7E532643CF9100FBAA0D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CFBA7E572643CF9200FBAA0D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFBA7E582643CF9200FBAA0D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CFBA7E712643CF9300FBAA0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CFBA7E722643CF9300FBAA0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CFBA7E742643CF9300FBAA0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D26A9600BC034DBF4500C2D9 /* Pods-TeraSystemsExercise.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TeraSystemsExercise/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = terasystems.TeraSystemsExercise;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CFBA7E752643CF9300FBAA0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C8BB62458CF1F1F3CC4F2E49 /* Pods-TeraSystemsExercise.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TeraSystemsExercise/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = terasystems.TeraSystemsExercise;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CFBA7E772643CF9300FBAA0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TeraSystemsExerciseTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = terasystems.TeraSystemsExerciseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TeraSystemsExercise.app/TeraSystemsExercise";
+			};
+			name = Debug;
+		};
+		CFBA7E782643CF9300FBAA0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TeraSystemsExerciseTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = terasystems.TeraSystemsExerciseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TeraSystemsExercise.app/TeraSystemsExercise";
+			};
+			name = Release;
+		};
+		CFBA7E7A2643CF9300FBAA0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TeraSystemsExerciseUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = terasystems.TeraSystemsExerciseUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TeraSystemsExercise;
+			};
+			name = Debug;
+		};
+		CFBA7E7B2643CF9300FBAA0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TeraSystemsExerciseUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = terasystems.TeraSystemsExerciseUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TeraSystemsExercise;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CFBA7E422643CF9100FBAA0D /* Build configuration list for PBXProject "TeraSystemsExercise" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFBA7E712643CF9300FBAA0D /* Debug */,
+				CFBA7E722643CF9300FBAA0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CFBA7E732643CF9300FBAA0D /* Build configuration list for PBXNativeTarget "TeraSystemsExercise" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFBA7E742643CF9300FBAA0D /* Debug */,
+				CFBA7E752643CF9300FBAA0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CFBA7E762643CF9300FBAA0D /* Build configuration list for PBXNativeTarget "TeraSystemsExerciseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFBA7E772643CF9300FBAA0D /* Debug */,
+				CFBA7E782643CF9300FBAA0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CFBA7E792643CF9300FBAA0D /* Build configuration list for PBXNativeTarget "TeraSystemsExerciseUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFBA7E7A2643CF9300FBAA0D /* Debug */,
+				CFBA7E7B2643CF9300FBAA0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CFBA7E3F2643CF9100FBAA0D /* Project object */;
+}

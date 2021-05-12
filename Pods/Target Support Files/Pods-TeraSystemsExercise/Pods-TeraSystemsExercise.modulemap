@@ -1,0 +1,6 @@
+framework module Pods_TeraSystemsExercise {
+  umbrella header "Pods-TeraSystemsExercise-umbrella.h"
+
+  export *
+  module * { export * }
+}
