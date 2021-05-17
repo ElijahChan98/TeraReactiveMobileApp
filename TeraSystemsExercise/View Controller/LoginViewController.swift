@@ -14,8 +14,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     private let viewModel = LoginViewModel()
-    weak var coordinator: LoginCoordinator?
+    weak var delegate: LoginViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,29 +36,39 @@ class LoginViewController: UIViewController {
     }
 
     func setupLoginButton() {
-        self.loginButton.reactive.controlEvents(.touchUpInside).observeValues { button in
-            guard button == self.loginButton else { // make sure its the correct button being used in this instance
-                return
-            }
-            self.viewModel.login { success, message in
-                if success {
-                    self.coordinator?.login(user: self.viewModel.user)
-                }
-                else {
-                    Utilities.showGenericOkAlert(title: nil, message: message)
-                }
-            }
+        let observer = viewModel.loginButtonObserver {
+            self.loginButton.isEnabled = true
+            self.loginButton.alpha = 1.0
+        } actionIfDisabled: {
+            self.loginButton.isEnabled = false
+            self.loginButton.alpha = 0.5
         }
+        let validator = viewModel.validator
+        validator.producer.start(observer)
+
+        
+        self.loginButton.reactive.pressed = CocoaAction(viewModel.loginAction(completion: { success, message in
+            if success {
+                self.delegate?.login(user: self.viewModel.user)
+            }
+            else {
+                Utilities.showGenericOkAlert(title: nil, message: message)
+            }
+            self.activityIndicator.stopAnimating()
+        })) { sender in self.activityIndicator.startAnimating() }
     }
     
     func setupSignInButton() {
-        self.signInButton.reactive.controlEvents(.touchUpInside).observeValues { button in
-            guard button == self.signInButton else {
-                return
+        self.signInButton.reactive.pressed = CocoaAction(Action<Void, Void, Never> {
+            return SignalProducer<Void, Never> { observer, lifetime in
+                self.delegate?.signIn()
+                observer.sendCompleted()
             }
-            self.coordinator?.signIn()
-        }
+        })
     }
-    
-    
+}
+
+protocol LoginViewControllerDelegate: AnyObject {
+    func login(user: User)
+    func signIn()
 }

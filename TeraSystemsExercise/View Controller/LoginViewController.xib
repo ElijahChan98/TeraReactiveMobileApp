@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="TeraSystemsExercise" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="LDt-pT-buj" id="lmH-KA-pUB"/>
                 <outlet property="loginButton" destination="WB4-6Z-dgS" id="xa4-5R-dkp"/>
                 <outlet property="passwordTextField" destination="rOJ-Zv-YZG" id="pwa-Hb-Rmp"/>
                 <outlet property="signInButton" destination="1Bk-Pa-i3a" id="2iD-v5-SDb"/>
@@ -23,6 +24,9 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="loginwallpaper" translatesAutoresizingMaskIntoConstraints="NO" id="Xvw-eS-wO5">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TerasystemsLogo" translatesAutoresizingMaskIntoConstraints="NO" id="IEj-gk-w86">
                     <rect key="frame" x="82" y="144" width="250" height="130"/>
                     <constraints>
@@ -59,34 +63,51 @@
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Bk-Pa-i3a">
-                    <rect key="frame" x="177" y="797" width="60" height="35"/>
+                    <rect key="frame" x="164.5" y="797" width="85" height="35"/>
+                    <color key="backgroundColor" name="AccentColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="6Eq-RB-SOt"/>
-                        <constraint firstAttribute="width" constant="60" id="Bxp-Y9-fRc"/>
+                        <constraint firstAttribute="width" constant="85" id="Bxp-Y9-fRc"/>
                     </constraints>
-                    <state key="normal" title="Sign In"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Sign Up"/>
                 </button>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="LDt-pT-buj">
+                    <rect key="frame" x="188.5" y="474" width="37" height="37"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="37" id="F6N-rj-2nN"/>
+                        <constraint firstAttribute="height" constant="37" id="lzG-V1-o5a"/>
+                    </constraints>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="WB4-6Z-dgS" firstAttribute="width" secondItem="eAX-5Y-wmh" secondAttribute="width" id="1yp-yq-EjA"/>
+                <constraint firstItem="Xvw-eS-wO5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="7qc-RI-YA2"/>
+                <constraint firstItem="LDt-pT-buj" firstAttribute="top" secondItem="WB4-6Z-dgS" secondAttribute="bottom" constant="20" id="CVQ-LK-2ZJ"/>
                 <constraint firstItem="rOJ-Zv-YZG" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Cva-uw-wuu"/>
                 <constraint firstItem="WB4-6Z-dgS" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="J4C-rb-VTc"/>
                 <constraint firstItem="rOJ-Zv-YZG" firstAttribute="top" secondItem="eAX-5Y-wmh" secondAttribute="bottom" constant="15" id="MPU-l3-UBK"/>
                 <constraint firstItem="1Bk-Pa-i3a" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="NqY-mb-ehT"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Xvw-eS-wO5" secondAttribute="trailing" id="SSC-RD-vfs"/>
                 <constraint firstItem="WB4-6Z-dgS" firstAttribute="top" secondItem="rOJ-Zv-YZG" secondAttribute="bottom" constant="30" id="YPt-xk-hpx"/>
+                <constraint firstAttribute="bottom" secondItem="Xvw-eS-wO5" secondAttribute="bottom" id="bZw-5p-4V0"/>
+                <constraint firstItem="Xvw-eS-wO5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ckh-Ss-S4k"/>
                 <constraint firstItem="IEj-gk-w86" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="ei1-ce-ZQh"/>
                 <constraint firstItem="IEj-gk-w86" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="g5B-sb-dLu"/>
+                <constraint firstItem="LDt-pT-buj" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="h4e-1M-tfB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="1Bk-Pa-i3a" secondAttribute="bottom" constant="30" id="pEJ-cp-UVY"/>
                 <constraint firstItem="eAX-5Y-wmh" firstAttribute="top" secondItem="IEj-gk-w86" secondAttribute="bottom" constant="30" id="ujV-or-tZO"/>
                 <constraint firstItem="eAX-5Y-wmh" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="yIN-94-jHh"/>
             </constraints>
-            <point key="canvasLocation" x="132" y="132"/>
+            <point key="canvasLocation" x="131.8840579710145" y="131.91964285714286"/>
         </view>
     </objects>
     <resources>
         <image name="TerasystemsLogo" width="222.5" height="45"/>
+        <image name="loginwallpaper" width="750" height="1334"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

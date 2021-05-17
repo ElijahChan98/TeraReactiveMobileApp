@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import ReactiveSwift
 
 struct User: Codable{
     enum CodingKeys: String, CodingKey {
@@ -27,15 +26,17 @@ struct User: Codable{
     var email: String
     var mobileNumber: String
     var landline: String?
-    
-    lazy var idProperty = MutableProperty<String>(self.id)
-    lazy var idNumberProperty = MutableProperty<String>(self.idNumber)
-    lazy var firstNameProperty = MutableProperty<String>(self.firstName)
-    lazy var middleNameProperty = MutableProperty<String?>(self.middleName)
-    lazy var lastNameProperty = MutableProperty<String>(self.lastName)
-    lazy var emailProperty = MutableProperty<String>(self.email)
-    lazy var mobileNumberProperty = MutableProperty<String>(self.mobileNumber)
-    lazy var landlineProperty = MutableProperty<String?>(self.landline)
-    
 }
 
+extension User {
+    init(userProperty: UserProperty) {
+        self.id = userProperty.idProperty.value
+        self.idNumber = userProperty.idNumberProperty.value
+        self.firstName = userProperty.firstNameProperty.value
+        self.middleName = userProperty.middleNameProperty.value
+        self.lastName = userProperty.lastNameProperty.value
+        self.email = userProperty.emailProperty.value
+        self.mobileNumber = userProperty.mobileNumberProperty.value
+        self.landline = userProperty.landlineProperty.value
+    }
+}

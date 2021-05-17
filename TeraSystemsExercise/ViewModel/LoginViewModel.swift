@@ -14,46 +14,48 @@ class LoginViewModel {
     var usernameProperty = MutableProperty<String>("")
     var passwordProperty = MutableProperty<String>("")
     
-    func login(completion: @escaping  (_ success: Bool, _ message: String) -> ()) {
-        let valuesNotEmpty: SignalProducer<Bool, Never> = SignalProducer { observer, lifetime in
-            guard !lifetime.hasEnded else {
-                observer.sendInterrupted()
-                return
-            }
-            observer.send(value: self.usernameProperty.value.count > 0 && self.passwordProperty.value.count > 0)
-            observer.sendCompleted()
-        }
-        
-        let action = Action<(String, String), Void, Never> { username, password in
-            return SignalProducer<Void, Never> { observer, _ in
-                RequestManager.shared.login(username: username, password: password) { success, response in
-                    guard success, let response = response else {
+    func loginAction(completion: @escaping  (_ success: Bool, _ message: String) -> ()) ->  Action<Void, Void, Never>{
+        return Action<Void, Void, Never> {
+            return SignalProducer<Void, Never> { observer, lifetime in
+                RequestManager.shared.login(username: self.usernameProperty.value, password: self.passwordProperty.value) { success, response in
+                    guard let payload = response,
+                          let loginResponse: LoginResponse = CodableObjectFactory.objectFromPayload(payload) else {
                         completion(false, "Something went wrong, please try again later")
+                        observer.sendCompleted()
                         return
                     }
-                    guard let payload = response["user"] as? [String: Any], let user: User = CodableObjectFactory.objectFromPayload(payload) else {
-                        completion(false, response["message"] as? String ?? "Something went wrong, please try again later")
+                    guard loginResponse.status == "0" else {
+                        completion(false, loginResponse.message!)
+                        observer.sendCompleted()
                         return
                     }
-                    self.user = user
-                    completion(true, "Login Success")
+                    self.user = loginResponse.user
+                    completion(success, "Success")
+                    observer.sendCompleted()
                 }
             }
         }
-        
-        let valuesEmptyObserver = Signal<Bool, Never>.Observer { success in
-            if success {
-                action.apply((self.usernameProperty.value, self.passwordProperty.value)).start()
+    }
+    
+    var validator: Property<Bool> {
+        return Property.combineLatest(usernameProperty, passwordProperty).map { username, password in
+            return username.count > 0 && password.count > 0
+        }
+    }
+    
+    func loginButtonObserver(actionIfEnabled: @escaping () -> (), actionIfDisabled: @escaping () -> ()) -> Signal<Bool,Never>.Observer {
+        return Signal<Bool, Never>.Observer { enabled in
+            if enabled {
+                actionIfEnabled()
             }
             else {
-                completion(false, "Please fill out all of the required fields")
+                actionIfDisabled()
             }
         } completed: {
             print("completed")
         } interrupted: {
             print("interrupted")
         }
-        
-        valuesNotEmpty.start(valuesEmptyObserver)
+
     }
 }

@@ -18,6 +18,7 @@
                 <outlet property="lastNameTextField" destination="LMU-hH-XG0" id="VtU-TX-WQQ"/>
                 <outlet property="middleNameTextField" destination="lyY-DV-Nnh" id="1bU-lo-fsD"/>
                 <outlet property="mobileTextField" destination="csA-qj-tEW" id="9us-vE-pXJ"/>
+                <outlet property="scrollView" destination="Fip-oW-VsC" id="cEH-hT-GJI"/>
                 <outlet property="updateButton" destination="hmh-qQ-LDL" id="dFv-WJ-S4o"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -130,7 +131,7 @@
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="apple@icloud.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JLQ-ZW-g7g">
                                             <rect key="frame" x="0.0" y="27" width="374" height="63"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                         </textField>
                                     </subviews>
                                     <constraints>
@@ -151,7 +152,7 @@
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="09123456789" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="csA-qj-tEW">
                                             <rect key="frame" x="0.0" y="27" width="374" height="63"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                         </textField>
                                     </subviews>
                                     <constraints>
@@ -169,10 +170,10 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="I" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FGL-Qy-dM6">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Optional" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FGL-Qy-dM6">
                                             <rect key="frame" x="0.0" y="27" width="374" height="63"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                         </textField>
                                     </subviews>
                                     <constraints>

@@ -9,37 +9,36 @@ import UIKit
 import ReactiveSwift
 
 class ProfileViewModel {
-    var user: User!
-    weak var delegate: ProfileViewModelProtocol?
+    private var user: User!
+    var userProperty: UserProperty!
     
     init(user: User) {
         self.user = user
+        self.userProperty = UserProperty(user: user)
     }
     
     func updateUser(user: User) {
         self.user = user
-        delegate?.reloadUserLabels()
+        self.userProperty.update(user: user)
     }
     
-    var fullName: Property<String> {
-        let fullName = [user.firstName, user.middleName ?? "", user.lastName]
-        let fullNameSignalProducer: SignalProducer<String, Never> = SignalProducer<String, Never> { observer, lifetime in
-            observer.send(value: fullName.joined(separator: " "))
-            observer.sendCompleted()
+    var fullNameProducer: SignalProducer<String, Never> {
+        let signalProducer: SignalProducer<String, Never>
+        
+        signalProducer = SignalProducer.combineLatest(userProperty.firstNameProperty, userProperty.middleNameProperty, userProperty.lastNameProperty).map { firstname, middlename, lastname in
+            let fullName: [String] = [firstname, (middlename ?? ""), lastname].filter { $0.count > 0 }
+            return fullName.joined(separator: " ")
         }
-        return Property<String>(initial: "", then: fullNameSignalProducer)
+        return signalProducer
     }
     
-    var initials: Property<String>{
-        let fullName = [user.firstName, user.middleName ?? "", user.lastName]
-        let initialsSignalProducer: SignalProducer<String, Never> = SignalProducer<String, Never> { observer, lifetime in
-            observer.send(value: fullName.reduce("") { $0 + $1.prefix(1) })
-            observer.sendCompleted()
+    var initialsProducer: SignalProducer<String, Never> {
+        let signalProducer: SignalProducer<String, Never>
+        
+        signalProducer = SignalProducer.combineLatest(userProperty.firstNameProperty, userProperty.lastNameProperty).map { firstname, lastname in
+            let fullName: [String] = [firstname, lastname]
+            return fullName.reduce("") { $0 + $1.prefix(1) }
         }
-        return Property<String>(initial: "", then: initialsSignalProducer)
+        return signalProducer
     }
-}
-
-protocol ProfileViewModelProtocol: AnyObject {
-    func reloadUserLabels()
 }

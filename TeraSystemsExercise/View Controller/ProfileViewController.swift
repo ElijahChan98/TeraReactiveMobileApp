@@ -9,7 +9,7 @@ import UIKit
 import ReactiveSwift
 import ReactiveCocoa
 
-class ProfileViewController: UIViewController, ProfileViewModelProtocol {
+class ProfileViewController: UIViewController {
     @IBOutlet weak var mainContainerView: UIView!
     @IBOutlet weak var initialsLabel: UILabel!
     @IBOutlet weak var initialsContainerView: UIView!
@@ -20,7 +20,7 @@ class ProfileViewController: UIViewController, ProfileViewModelProtocol {
     @IBOutlet weak var mobileNumberLabel: UILabel!
     private var updateLabelsObserver: Signal<Void, Never>.Observer!
     var viewModel: ProfileViewModel!
-    var coordinator: MainCoordinator?
+    weak var delegate: ProfileViewControllerDelegate?
     
     init(viewModel: ProfileViewModel) {
         self.viewModel = viewModel
@@ -40,18 +40,23 @@ class ProfileViewController: UIViewController, ProfileViewModelProtocol {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        guard let user = coordinator?.user else {
+        guard let user = delegate?.getUser() else {
             return
         }
         self.viewModel.updateUser(user: user)
     }
     
     func setupNavigationBar() {
-        let logoutButton = UIBarButtonItem(title: "Logout", style: .done, target: coordinator, action: #selector(coordinator?.logout))
+        self.title = "Profile"
+        let logoutButton = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(self.logout))
         logoutButton.tintColor = UIColor.white
         navigationItem.rightBarButtonItem = logoutButton
         self.navigationController?.navigationBar.barTintColor = UIColor.systemBlue
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+    }
+    
+    @objc func logout() {
+        self.delegate?.logout()
     }
     
     func setupViews() {
@@ -61,28 +66,26 @@ class ProfileViewController: UIViewController, ProfileViewModelProtocol {
         mainContainerView.layer.cornerRadius = 10
     }
     
-    func reloadUserLabels() {
-        updateLabelsObserver.send(value: ())
-    }
-    
     func setupLabels() {
-        updateLabelsObserver = Signal<Void, Never>.Observer(value: { _ in
-            self.initialsLabel.reactive.text <~ self.viewModel.initials
-            self.fullNameLabel.reactive.text <~ self.viewModel.fullName
-            self.idNumberLabel.reactive.text <~ self.viewModel.user.idNumberProperty
-            self.emailLabel.reactive.text <~ self.viewModel.user.emailProperty
-            self.mobileNumberLabel.reactive.text <~ self.viewModel.user.mobileNumberProperty
-        })
-        updateLabelsObserver.send(value: ())
+        self.initialsLabel.reactive.text <~ self.viewModel.initialsProducer
+        self.fullNameLabel.reactive.text <~ self.viewModel.fullNameProducer
+        self.idNumberLabel.reactive.text <~ self.viewModel.userProperty.idNumberProperty
+        self.emailLabel.reactive.text <~ self.viewModel.userProperty.emailProperty
+        self.mobileNumberLabel.reactive.text <~ self.viewModel.userProperty.mobileNumberProperty
     }
     
     func setupUpdateButton() {
-        self.updateButton.reactive.controlEvents(.touchUpInside).observeValues { button in
-            guard button == self.updateButton else {
-                return
+        self.updateButton.reactive.pressed = CocoaAction(Action<Void, Void, Never> {
+            return SignalProducer<Void, Never> { observer, lifetime in
+                self.delegate?.update()
+                observer.sendCompleted()
             }
-            self.coordinator?.update()
-        }
+        })
     }
+}
 
+protocol ProfileViewControllerDelegate: AnyObject {
+    func update()
+    func logout()
+    func getUser() -> User
 }

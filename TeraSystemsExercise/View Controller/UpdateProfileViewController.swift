@@ -10,6 +10,7 @@ import ReactiveSwift
 import ReactiveCocoa
 
 class UpdateProfileViewController: UIViewController {
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var updateButton: UIButton!
     @IBOutlet weak var idNumberTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -19,7 +20,7 @@ class UpdateProfileViewController: UIViewController {
     @IBOutlet weak var mobileTextField: UITextField!
     @IBOutlet weak var landlineTextField: UITextField!
     var viewModel: UpdateProfileViewModel!
-    weak var coordinator: UpdateCoordinator?
+    weak var delegate: UpdateProfileViewControllerDelegate?
     
     init(viewModel: UpdateProfileViewModel) {
         self.viewModel = viewModel
@@ -32,37 +33,44 @@ class UpdateProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupKeyboardInset()
         setupNavigationBar()
         setupLabels()
         setupUpdateButton()
     }
     
     func setupLabels() {
-        self.idNumberTextField.reactive.text <~ viewModel.user.idNumberProperty
-        self.firstNameTextField.reactive.text <~ viewModel.user.firstNameProperty
-        self.middleNameTextField.reactive.text <~ viewModel.user.middleNameProperty
-        self.lastNameTextField.reactive.text <~ viewModel.user.lastNameProperty
-        self.emailTextField.reactive.text <~ viewModel.user.emailProperty
-        self.mobileTextField.reactive.text <~ viewModel.user.mobileNumberProperty
-        self.landlineTextField.reactive.text <~ viewModel.user.landlineProperty
+        let user = viewModel.userProperty!
+        self.idNumberTextField.reactive.text <~ user.idNumberProperty
+        self.firstNameTextField.reactive.text <~ user.firstNameProperty
+        self.middleNameTextField.reactive.text <~ user.middleNameProperty
+        self.lastNameTextField.reactive.text <~ user.lastNameProperty
+        self.emailTextField.reactive.text <~ user.emailProperty
+        self.mobileTextField.reactive.text <~ user.mobileNumberProperty
+        self.landlineTextField.reactive.text <~ user.landlineProperty
         
-        viewModel.user.idNumberProperty <~ self.idNumberTextField.reactive.continuousTextValues
-        viewModel.user.firstNameProperty <~ self.firstNameTextField.reactive.continuousTextValues
-        viewModel.user.middleNameProperty <~ self.middleNameTextField.reactive.continuousTextValues
-        viewModel.user.lastNameProperty <~ self.lastNameTextField.reactive.continuousTextValues
-        viewModel.user.emailProperty <~ self.emailTextField.reactive.continuousTextValues
-        viewModel.user.mobileNumberProperty <~ self.mobileTextField.reactive.continuousTextValues
-        viewModel.user.landlineProperty <~ self.landlineTextField.reactive.continuousTextValues
+        user.idNumberProperty <~ self.idNumberTextField.reactive.continuousTextValues
+        user.firstNameProperty <~ self.firstNameTextField.reactive.continuousTextValues
+        user.middleNameProperty <~ self.middleNameTextField.reactive.continuousTextValues
+        user.lastNameProperty <~ self.lastNameTextField.reactive.continuousTextValues
+        user.emailProperty <~ self.emailTextField.reactive.continuousTextValues
+        user.mobileNumberProperty <~ self.mobileTextField.reactive.continuousTextValues
+        user.landlineProperty <~ self.landlineTextField.reactive.continuousTextValues
     }
 
     func setupNavigationBar() {
         self.title = "Update Profile"
-        let closeButton = UIBarButtonItem(title: "X", style: .done, target: coordinator, action: #selector(coordinator?.closeUpdate))
+        let closeButton = UIBarButtonItem(title: "X", style: .done, target: self, action: #selector(closeUpdate))
+        
         closeButton.tintColor = UIColor.white
         navigationItem.leftBarButtonItem = closeButton
         self.navigationController?.navigationBar.barTintColor = UIColor.systemBlue
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         
+    }
+    
+    @objc func closeUpdate() {
+        self.delegate?.closeUpdate()
     }
     
     func setupUpdateButton() {
@@ -75,17 +83,39 @@ class UpdateProfileViewController: UIViewController {
         }
         let enabled = viewModel.updateButtonEnabled
         enabled.signal.observe(observer)
+        
+        self.updateButton.reactive.pressed = CocoaAction(viewModel.update(completion: { success, message in
+            if success {
+                self.delegate?.successUpdate(updatedUser: self.viewModel.user)
+            }
+        }))
+    }
+}
 
-        self.updateButton.reactive.controlEvents(.touchUpInside).observeValues { button in
-            guard button == self.updateButton else {
-                return
-            }
-            self.viewModel.update { success, message in
-                if success {
-                    self.coordinator?.successUpdate(updatedUser: self.viewModel.user)
-                }
-            }
-        }
+extension UpdateProfileViewController {
+    @objc func keyboardWillShow(notification:NSNotification){
+        let userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+
+        var contentInset:UIEdgeInsets = self.scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        scrollView.contentInset = contentInset
     }
 
+    @objc func keyboardWillHide(notification:NSNotification){
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInset
+    }
+    
+    func setupKeyboardInset() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+}
+
+protocol UpdateProfileViewControllerDelegate: AnyObject{
+    func successUpdate(updatedUser: User)
+    func closeUpdate()
 }

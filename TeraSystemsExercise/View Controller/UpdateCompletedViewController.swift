@@ -9,7 +9,7 @@ import UIKit
 
 class UpdateCompletedViewController: UIViewController {
     @IBOutlet weak var okButton: UIButton!
-    weak var coordinator: UpdateCoordinator?
+    weak var delegate: UpdateProfileViewControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Success"
@@ -22,7 +22,7 @@ class UpdateCompletedViewController: UIViewController {
             guard button == self.okButton else {
                 return
             }
-            self.coordinator?.closeUpdate()
+            self.delegate?.closeUpdate()
         }
     }
 }

@@ -52,9 +52,11 @@ class RequestManager {
             DispatchQueue.main.async {
                 if let httpResponse = response as? HTTPURLResponse {
                     if httpResponse.statusCode == 401 {
+                        completion(false, nil)
                     }
                     else if httpResponse.statusCode == 500 {
                         //internal server error
+                        completion(false, nil)
                     }
                 }
                 
