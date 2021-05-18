@@ -25,6 +25,7 @@
 		CFAE4EC3264E6A49007C6BCF /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4EC2264E6A49007C6BCF /* MainCoordinator.swift */; };
 		CFAE4EC5264E6A55007C6BCF /* UpdateCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4EC4264E6A55007C6BCF /* UpdateCoordinator.swift */; };
 		CFAE4EC7265247B3007C6BCF /* UserProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4EC6265247B3007C6BCF /* UserProperty.swift */; };
+		CFAE4EC926539484007C6BCF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4EC826539484007C6BCF /* NetworkError.swift */; };
 		CFBA7E4B2643CF9100FBAA0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA7E4A2643CF9100FBAA0D /* AppDelegate.swift */; };
 		CFBA7E4D2643CF9100FBAA0D /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA7E4C2643CF9100FBAA0D /* DocumentBrowserViewController.swift */; };
 		CFBA7E4F2643CF9100FBAA0D /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA7E4E2643CF9100FBAA0D /* DocumentViewController.swift */; };
@@ -79,6 +80,7 @@
 		CFAE4EC2264E6A49007C6BCF /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		CFAE4EC4264E6A55007C6BCF /* UpdateCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCoordinator.swift; sourceTree = "<group>"; };
 		CFAE4EC6265247B3007C6BCF /* UserProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProperty.swift; sourceTree = "<group>"; };
+		CFAE4EC826539484007C6BCF /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		CFBA7E472643CF9100FBAA0D /* TeraSystemsExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeraSystemsExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBA7E4A2643CF9100FBAA0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFBA7E4C2643CF9100FBAA0D /* DocumentBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				CFAE4EAB2644FBCC007C6BCF /* Constants.swift */,
 				CFAE4EAF2645147C007C6BCF /* CodableObjectFactory.swift */,
 				CFAE4EB326451E0F007C6BCF /* Utilities.swift */,
+				CFAE4EC826539484007C6BCF /* NetworkError.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 			files = (
 				CFBA7E862643E4CB00FBAA0D /* ProfileViewController.swift in Sources */,
 				CFBA7E512643CF9100FBAA0D /* Document.swift in Sources */,
+				CFAE4EC926539484007C6BCF /* NetworkError.swift in Sources */,
 				CFAE4EB426451E10007C6BCF /* Utilities.swift in Sources */,
 				CFAE4EB02645147C007C6BCF /* CodableObjectFactory.swift in Sources */,
 				CFBA7E4F2643CF9100FBAA0D /* DocumentViewController.swift in Sources */,

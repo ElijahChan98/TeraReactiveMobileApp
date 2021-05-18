@@ -14,27 +14,45 @@ class LoginViewModel {
     var usernameProperty = MutableProperty<String>("")
     var passwordProperty = MutableProperty<String>("")
     
-    func loginAction(completion: @escaping  (_ success: Bool, _ message: String) -> ()) ->  Action<Void, Void, Never>{
-        return Action<Void, Void, Never> {
-            return SignalProducer<Void, Never> { observer, lifetime in
+    func loginAction(stateObserver: Signal<Bool,Never>.Observer, completionObserver: Signal<User, NetworkError>.Observer) -> Action<Void, User, NetworkError>{
+        let validator = self.validator
+        validator.producer.start(stateObserver)
+        
+        return Action<Void, User, NetworkError>(enabledIf: validator) {
+            let producer = SignalProducer<User, NetworkError> { observer, lifetime in
                 RequestManager.shared.login(username: self.usernameProperty.value, password: self.passwordProperty.value) { success, response in
                     guard let payload = response,
                           let loginResponse: LoginResponse = CodableObjectFactory.objectFromPayload(payload) else {
-                        completion(false, "Something went wrong, please try again later")
-                        observer.sendCompleted()
+                        observer.send(error: .failed(nil))
+                        observer.sendInterrupted()
                         return
                     }
                     guard loginResponse.status == "0" else {
-                        completion(false, loginResponse.message!)
-                        observer.sendCompleted()
+                        observer.send(error: .failed(loginResponse.message!))
+                        observer.sendInterrupted()
                         return
                     }
                     self.user = loginResponse.user
-                    completion(success, "Success")
+                    observer.send(value: loginResponse.user!)
                     observer.sendCompleted()
                 }
             }
+            producer.start(completionObserver)
+            return producer
         }
+    }
+    
+    func loginResponseObserver(actionOnSuccess: @escaping (_ user: User) -> (), actionOnFail: @escaping (_ message: String) -> ()) -> Signal<User, NetworkError>.Observer {
+        return Signal<User, NetworkError>.Observer { user in
+            actionOnSuccess(user)
+        } failed: { error in
+            actionOnFail(error.description)
+        } completed: {
+            
+        } interrupted: {
+            
+        }
+
     }
     
     var validator: Property<Bool> {

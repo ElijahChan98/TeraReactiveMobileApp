@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UpdateProfileViewController" customModule="TeraSystemsExercise" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="7d0-R5-cJt" id="QXw-65-CHf"/>
                 <outlet property="emailTextField" destination="JLQ-ZW-g7g" id="eMX-iL-efe"/>
                 <outlet property="firstNameTextField" destination="idf-gG-TnA" id="KrH-2O-nu2"/>
                 <outlet property="idNumberTextField" destination="iyf-CR-tM9" id="jm5-la-qty"/>
@@ -192,6 +193,9 @@
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                 </button>
+                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="7d0-R5-cJt">
+                                    <rect key="frame" x="197" y="722.5" width="20" height="20"/>
+                                </activityIndicatorView>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
@@ -201,6 +205,7 @@
                                 <constraint firstAttribute="trailing" secondItem="hmh-qQ-LDL" secondAttribute="trailing" id="8Ig-Cx-itZ"/>
                                 <constraint firstItem="DAv-uX-8XO" firstAttribute="top" secondItem="6wz-S4-Rak" secondAttribute="bottom" constant="10" id="9ot-q5-kAw"/>
                                 <constraint firstAttribute="bottom" secondItem="hmh-qQ-LDL" secondAttribute="bottom" constant="10" id="CcT-HF-cYg"/>
+                                <constraint firstItem="7d0-R5-cJt" firstAttribute="centerY" secondItem="hmh-qQ-LDL" secondAttribute="centerY" id="IW6-eX-izZ"/>
                                 <constraint firstAttribute="trailing" secondItem="dcE-t4-YMz" secondAttribute="trailing" constant="20" id="Iof-qm-Fz6"/>
                                 <constraint firstItem="MCP-Ya-99B" firstAttribute="leading" secondItem="OaB-ea-5hJ" secondAttribute="leading" constant="20" id="J1D-27-6AO"/>
                                 <constraint firstAttribute="trailing" secondItem="6wz-S4-Rak" secondAttribute="trailing" constant="20" id="Ktf-10-dFX"/>
@@ -222,6 +227,7 @@
                                 <constraint firstItem="dcE-t4-YMz" firstAttribute="leading" secondItem="OaB-ea-5hJ" secondAttribute="leading" constant="20" id="kZ1-gc-fv1"/>
                                 <constraint firstAttribute="trailing" secondItem="MCP-Ya-99B" secondAttribute="trailing" constant="20" id="mGE-WL-9Q2"/>
                                 <constraint firstItem="dcE-t4-YMz" firstAttribute="top" secondItem="C8o-Uq-hw8" secondAttribute="bottom" constant="10" id="nX9-Ci-D5M"/>
+                                <constraint firstItem="7d0-R5-cJt" firstAttribute="centerX" secondItem="hmh-qQ-LDL" secondAttribute="centerX" id="ryt-LO-ST7"/>
                                 <constraint firstItem="6wz-S4-Rak" firstAttribute="top" secondItem="MCP-Ya-99B" secondAttribute="bottom" constant="10" id="tjI-7S-qP4"/>
                                 <constraint firstItem="k8o-e2-vYS" firstAttribute="top" secondItem="UHy-Ho-iT4" secondAttribute="bottom" constant="10" id="u65-mV-km6"/>
                                 <constraint firstItem="DAv-uX-8XO" firstAttribute="top" secondItem="6wz-S4-Rak" secondAttribute="bottom" constant="10" id="wOY-zI-jAY"/>

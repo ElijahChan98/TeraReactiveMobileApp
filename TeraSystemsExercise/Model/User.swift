@@ -10,13 +10,13 @@ import UIKit
 struct User: Codable{
     enum CodingKeys: String, CodingKey {
         case id = "userID"
-        case idNumber = "idNumber"
-        case firstName = "firstName"
-        case middleName = "middleName"
-        case lastName = "lastName"
         case email = "emailAddress"
-        case mobileNumber = "mobileNumber"
-        case landline = "landline"
+        case idNumber
+        case firstName
+        case middleName
+        case lastName
+        case mobileNumber
+        case landline
     }
     var id: String
     var idNumber: String

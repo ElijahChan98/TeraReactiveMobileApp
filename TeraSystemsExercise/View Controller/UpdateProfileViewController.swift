@@ -10,6 +10,7 @@ import ReactiveSwift
 import ReactiveCocoa
 
 class UpdateProfileViewController: UIViewController {
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var updateButton: UIButton!
     @IBOutlet weak var idNumberTextField: UITextField!
@@ -37,6 +38,9 @@ class UpdateProfileViewController: UIViewController {
         setupNavigationBar()
         setupLabels()
         setupUpdateButton()
+        
+        mobileTextField.delegate = self
+        landlineTextField.delegate = self
     }
     
     func setupLabels() {
@@ -74,25 +78,35 @@ class UpdateProfileViewController: UIViewController {
     }
     
     func setupUpdateButton() {
-        let observer = viewModel.updateButtonObserver {
+        let buttonObserver = viewModel.updateButtonObserver {
             self.updateButton.isEnabled = true
             self.updateButton.alpha = 1.0
         } actionIfDisabled: {
             self.updateButton.isEnabled = false
             self.updateButton.alpha = 0.5
         }
-        let enabled = viewModel.updateButtonEnabled
-        enabled.signal.observe(observer)
         
-        self.updateButton.reactive.pressed = CocoaAction(viewModel.update(completion: { success, message in
-            if success {
-                self.delegate?.successUpdate(updatedUser: self.viewModel.user)
-            }
-        }))
+        let completionObserver = viewModel.updateResponseObserver { message in
+            self.delegate?.successUpdate(updatedUser: self.viewModel.user)
+            self.activityIndicator.stopAnimating()
+        } actionOnFail: { message in
+            Utilities.showGenericOkAlert(title: nil, message: message)
+            self.activityIndicator.stopAnimating()
+        }
+        
+        self.updateButton.reactive.pressed = CocoaAction(viewModel.update(stateObserver: buttonObserver, completionObserver: completionObserver)) { sender in
+            self.activityIndicator.startAnimating()
+        }
     }
 }
 
-extension UpdateProfileViewController {
+extension UpdateProfileViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let allowedCharacters = CharacterSet.decimalDigits
+        let characterSet = CharacterSet(charactersIn: string)
+        return allowedCharacters.isSuperset(of: characterSet)
+    }
+    
     @objc func keyboardWillShow(notification:NSNotification){
         let userInfo = notification.userInfo!
         var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue

@@ -36,26 +36,24 @@ class LoginViewController: UIViewController {
     }
 
     func setupLoginButton() {
-        let observer = viewModel.loginButtonObserver {
+        let buttonObserver = viewModel.loginButtonObserver {
             self.loginButton.isEnabled = true
             self.loginButton.alpha = 1.0
         } actionIfDisabled: {
             self.loginButton.isEnabled = false
             self.loginButton.alpha = 0.5
         }
-        let validator = viewModel.validator
-        validator.producer.start(observer)
-
         
-        self.loginButton.reactive.pressed = CocoaAction(viewModel.loginAction(completion: { success, message in
-            if success {
-                self.delegate?.login(user: self.viewModel.user)
-            }
-            else {
-                Utilities.showGenericOkAlert(title: nil, message: message)
-            }
+        let completionObserver = viewModel.loginResponseObserver { user in
+            self.delegate?.login(user: user)
             self.activityIndicator.stopAnimating()
-        })) { sender in self.activityIndicator.startAnimating() }
+        } actionOnFail: { message in
+            Utilities.showGenericOkAlert(title: nil, message: message)
+            self.activityIndicator.stopAnimating()
+        }
+        
+        self.loginButton.reactive.pressed = CocoaAction(viewModel.loginAction(stateObserver: buttonObserver, completionObserver: completionObserver)) { sender in self.activityIndicator.startAnimating()
+        }
     }
     
     func setupSignInButton() {
@@ -66,6 +64,7 @@ class LoginViewController: UIViewController {
             }
         })
     }
+    
 }
 
 protocol LoginViewControllerDelegate: AnyObject {

@@ -9,9 +9,9 @@ import UIKit
 
 struct LoginResponse: Codable {
     enum CodingKeys: String, CodingKey {
-        case status = "status"
-        case message = "message"
-        case user = "user"
+        case status
+        case message
+        case user
     }
     var status: String
     var message: String?
