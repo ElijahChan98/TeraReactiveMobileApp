@@ -10,7 +10,7 @@ import UIKit
 class MainCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
-    var user: User!
+    unowned var user: User!
     weak var parent: LoginCoordinator?
     
     init(navigationController: UINavigationController) {

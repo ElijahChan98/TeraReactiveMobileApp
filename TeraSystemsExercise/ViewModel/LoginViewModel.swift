@@ -10,7 +10,7 @@ import ReactiveSwift
 import ReactiveCocoa
 
 class LoginViewModel {
-    var user: User!
+    unowned var user: User!
     var usernameProperty = MutableProperty<String>("")
     var passwordProperty = MutableProperty<String>("")
     

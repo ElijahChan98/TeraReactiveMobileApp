@@ -44,7 +44,7 @@ class UpdateProfileViewController: UIViewController {
     }
     
     func setupLabels() {
-        let user = viewModel.userProperty!
+        let user = viewModel.user!
         self.idNumberTextField.reactive.text <~ user.idNumberProperty
         self.firstNameTextField.reactive.text <~ user.firstNameProperty
         self.middleNameTextField.reactive.text <~ user.middleNameProperty
@@ -52,7 +52,7 @@ class UpdateProfileViewController: UIViewController {
         self.emailTextField.reactive.text <~ user.emailProperty
         self.mobileTextField.reactive.text <~ user.mobileNumberProperty
         self.landlineTextField.reactive.text <~ user.landlineProperty
-        
+
         user.idNumberProperty <~ self.idNumberTextField.reactive.continuousTextValues
         user.firstNameProperty <~ self.firstNameTextField.reactive.continuousTextValues
         user.middleNameProperty <~ self.middleNameTextField.reactive.continuousTextValues

@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import ReactiveSwift
 
-struct User: Codable{
+class User: Codable{
     enum CodingKeys: String, CodingKey {
         case id = "userID"
         case email = "emailAddress"
@@ -26,17 +27,26 @@ struct User: Codable{
     var email: String
     var mobileNumber: String
     var landline: String?
+    
+    var idProperty = MutableProperty<String>("")
+    var idNumberProperty = MutableProperty<String>("")
+    var firstNameProperty = MutableProperty<String>("")
+    var middleNameProperty = MutableProperty<String?>("")
+    var lastNameProperty = MutableProperty<String>("")
+    var emailProperty = MutableProperty<String>("")
+    var mobileNumberProperty = MutableProperty<String>("")
+    var landlineProperty = MutableProperty<String?>("")
 }
 
 extension User {
-    init(userProperty: UserProperty) {
-        self.id = userProperty.idProperty.value
-        self.idNumber = userProperty.idNumberProperty.value
-        self.firstName = userProperty.firstNameProperty.value
-        self.middleName = userProperty.middleNameProperty.value
-        self.lastName = userProperty.lastNameProperty.value
-        self.email = userProperty.emailProperty.value
-        self.mobileNumber = userProperty.mobileNumberProperty.value
-        self.landline = userProperty.landlineProperty.value
+    func update(user: User) {
+        self.idProperty.value = user.id
+        self.idNumberProperty.value = user.idNumber
+        self.firstNameProperty.value = user.firstName
+        self.middleNameProperty.value = user.middleName
+        self.lastNameProperty.value = user.lastName
+        self.emailProperty.value = user.email
+        self.mobileNumberProperty.value = user.mobileNumber
+        self.landlineProperty.value = user.landline
     }
 }

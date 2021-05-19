@@ -24,7 +24,6 @@
 		CFAE4EC1264E6A41007C6BCF /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4EC0264E6A41007C6BCF /* LoginCoordinator.swift */; };
 		CFAE4EC3264E6A49007C6BCF /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4EC2264E6A49007C6BCF /* MainCoordinator.swift */; };
 		CFAE4EC5264E6A55007C6BCF /* UpdateCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4EC4264E6A55007C6BCF /* UpdateCoordinator.swift */; };
-		CFAE4EC7265247B3007C6BCF /* UserProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4EC6265247B3007C6BCF /* UserProperty.swift */; };
 		CFAE4EC926539484007C6BCF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4EC826539484007C6BCF /* NetworkError.swift */; };
 		CFBA7E4B2643CF9100FBAA0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA7E4A2643CF9100FBAA0D /* AppDelegate.swift */; };
 		CFBA7E4D2643CF9100FBAA0D /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA7E4C2643CF9100FBAA0D /* DocumentBrowserViewController.swift */; };
@@ -79,7 +78,6 @@
 		CFAE4EC0264E6A41007C6BCF /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		CFAE4EC2264E6A49007C6BCF /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		CFAE4EC4264E6A55007C6BCF /* UpdateCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCoordinator.swift; sourceTree = "<group>"; };
-		CFAE4EC6265247B3007C6BCF /* UserProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProperty.swift; sourceTree = "<group>"; };
 		CFAE4EC826539484007C6BCF /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		CFBA7E472643CF9100FBAA0D /* TeraSystemsExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeraSystemsExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBA7E4A2643CF9100FBAA0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -264,7 +262,6 @@
 			isa = PBXGroup;
 			children = (
 				CFAE4EAD264511B7007C6BCF /* User.swift */,
-				CFAE4EC6265247B3007C6BCF /* UserProperty.swift */,
 				CFAE4EBE264E56DC007C6BCF /* LoginResponse.swift */,
 			);
 			path = Model;
@@ -472,7 +469,6 @@
 				CFAE4EA52644F40D007C6BCF /* UpdateCompletedViewController.swift in Sources */,
 				CFAE4EBB264917FA007C6BCF /* Coordinator.swift in Sources */,
 				CFAE4EB626453EEF007C6BCF /* ProfileViewModel.swift in Sources */,
-				CFAE4EC7265247B3007C6BCF /* UserProperty.swift in Sources */,
 				CFAE4EC3264E6A49007C6BCF /* MainCoordinator.swift in Sources */,
 				CFAE4EB2264518ED007C6BCF /* LoginViewModel.swift in Sources */,
 				CFAE4EC5264E6A55007C6BCF /* UpdateCoordinator.swift in Sources */,

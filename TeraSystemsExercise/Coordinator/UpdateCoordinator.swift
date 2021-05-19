@@ -10,7 +10,7 @@ import UIKit
 class UpdateCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
-    var user: User!
+    unowned var user: User!
     weak var parent: MainCoordinator?
     
     init(navigationController: UINavigationController) {
@@ -34,15 +34,15 @@ class UpdateCoordinator: Coordinator {
 
 extension UpdateCoordinator: UpdateProfileViewControllerDelegate {
     func successUpdate(updatedUser: User) {
-        self.user = updatedUser
+        parent?.user = updatedUser
         let updateCompleteVC = UpdateCompletedViewController()
         updateCompleteVC.delegate = self
         self.navigationController.pushViewController(updateCompleteVC, animated: true)
     }
     
     func closeUpdate() {
-        parent?.user = self.user
         parent?.navigationController.dismiss(animated: true) {
+            self.user = nil
             self.parent?.childDidFinish(self)
         }
     }

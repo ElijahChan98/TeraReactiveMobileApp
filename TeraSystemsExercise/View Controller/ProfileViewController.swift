@@ -18,7 +18,6 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var idNumberLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var mobileNumberLabel: UILabel!
-    private var updateLabelsObserver: Signal<Void, Never>.Observer!
     var viewModel: ProfileViewModel!
     weak var delegate: ProfileViewControllerDelegate?
     
@@ -69,9 +68,9 @@ class ProfileViewController: UIViewController {
     func setupLabels() {
         self.initialsLabel.reactive.text <~ self.viewModel.initialsProducer
         self.fullNameLabel.reactive.text <~ self.viewModel.fullNameProducer
-        self.idNumberLabel.reactive.text <~ self.viewModel.userProperty.idNumberProperty
-        self.emailLabel.reactive.text <~ self.viewModel.userProperty.emailProperty
-        self.mobileNumberLabel.reactive.text <~ self.viewModel.userProperty.mobileNumberProperty
+        self.idNumberLabel.reactive.text <~ self.viewModel.user.idNumberProperty
+        self.emailLabel.reactive.text <~ self.viewModel.user.emailProperty
+        self.mobileNumberLabel.reactive.text <~ self.viewModel.user.mobileNumberProperty
     }
     
     func setupUpdateButton() {
