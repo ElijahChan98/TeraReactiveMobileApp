@@ -14,22 +14,17 @@ class LoginViewModel {
     var usernameProperty = MutableProperty<String>("")
     var passwordProperty = MutableProperty<String>("")
     
-    func loginAction(stateObserver: Signal<Bool,Never>.Observer, completionObserver: Signal<User, NetworkError>.Observer) -> Action<Void, User, NetworkError>{
-        let validator = self.validator
-        validator.producer.start(stateObserver)
-        
-        return Action<Void, User, NetworkError>(enabledIf: validator) {
+    func loginAction(onStart: @escaping (() -> ()), completionObserver: Signal<User, NetworkError>.Observer) -> Action<Void, User, NetworkError>{
+        return Action<Void, User, NetworkError>(enabledIf: self.validator) {
             let producer = SignalProducer<User, NetworkError> { observer, lifetime in
                 RequestManager.shared.login(username: self.usernameProperty.value, password: self.passwordProperty.value) { success, response in
                     guard let payload = response,
                           let loginResponse: LoginResponse = CodableObjectFactory.objectFromPayload(payload) else {
                         observer.send(error: .failed(nil))
-                        observer.sendInterrupted()
                         return
                     }
                     guard loginResponse.status == "0" else {
                         observer.send(error: .failed(loginResponse.message!))
-                        observer.sendInterrupted()
                         return
                     }
                     self.user = loginResponse.user
@@ -37,7 +32,7 @@ class LoginViewModel {
                     observer.sendCompleted()
                 }
             }
-            producer.start(completionObserver)
+            producer.on(starting: onStart).start(completionObserver)
             return producer
         }
     }
@@ -59,21 +54,5 @@ class LoginViewModel {
         return Property.combineLatest(usernameProperty, passwordProperty).map { username, password in
             return username.count > 0 && password.count > 0
         }
-    }
-    
-    func loginButtonObserver(actionIfEnabled: @escaping () -> (), actionIfDisabled: @escaping () -> ()) -> Signal<Bool,Never>.Observer {
-        return Signal<Bool, Never>.Observer { enabled in
-            if enabled {
-                actionIfEnabled()
-            }
-            else {
-                actionIfDisabled()
-            }
-        } completed: {
-            print("completed")
-        } interrupted: {
-            print("interrupted")
-        }
-
     }
 }

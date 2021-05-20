@@ -66,11 +66,13 @@ class ProfileViewController: UIViewController {
     }
     
     func setupLabels() {
-        self.initialsLabel.reactive.text <~ self.viewModel.initialsProducer
-        self.fullNameLabel.reactive.text <~ self.viewModel.fullNameProducer
-        self.idNumberLabel.reactive.text <~ self.viewModel.user.idNumberProperty
-        self.emailLabel.reactive.text <~ self.viewModel.user.emailProperty
-        self.mobileNumberLabel.reactive.text <~ self.viewModel.user.mobileNumberProperty
+        self.viewModel.user.map { user in
+            self.initialsLabel.reactive.text <~ user.map({$0.email})
+            self.fullNameLabel.reactive.text <~ user.map({$0.fullName})
+            self.initialsLabel.reactive.text <~ user.map({$0.initials})
+            self.emailLabel.reactive.text <~ user.map({$0.email})
+            self.mobileNumberLabel.reactive.text <~ user.map({$0.mobileNumber})
+        }
     }
     
     func setupUpdateButton() {

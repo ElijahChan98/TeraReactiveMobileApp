@@ -52,6 +52,7 @@ extension MainCoordinator: ProfileViewControllerDelegate{
         guard let parentNavController = parent?.navigationController else {
             return
         }
+        self.user = nil
         (UIApplication.shared.delegate as? AppDelegate)?.changeRootViewController(parentNavController)
         parent?.childDidFinish(self)
     }

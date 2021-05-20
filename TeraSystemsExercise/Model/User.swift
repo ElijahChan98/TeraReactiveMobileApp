@@ -28,25 +28,13 @@ class User: Codable{
     var mobileNumber: String
     var landline: String?
     
-    var idProperty = MutableProperty<String>("")
-    var idNumberProperty = MutableProperty<String>("")
-    var firstNameProperty = MutableProperty<String>("")
-    var middleNameProperty = MutableProperty<String?>("")
-    var lastNameProperty = MutableProperty<String>("")
-    var emailProperty = MutableProperty<String>("")
-    var mobileNumberProperty = MutableProperty<String>("")
-    var landlineProperty = MutableProperty<String?>("")
-}
-
-extension User {
-    func update(user: User) {
-        self.idProperty.value = user.id
-        self.idNumberProperty.value = user.idNumber
-        self.firstNameProperty.value = user.firstName
-        self.middleNameProperty.value = user.middleName
-        self.lastNameProperty.value = user.lastName
-        self.emailProperty.value = user.email
-        self.mobileNumberProperty.value = user.mobileNumber
-        self.landlineProperty.value = user.landline
+    var fullName: String {
+        let fullName: [String] = [self.firstName, (self.middleName ?? ""), self.lastName].filter { $0.count > 0 }
+        return fullName.joined(separator: " ")
+    }
+    
+    var initials: String {
+        let fullName: [String] = [self.firstName, self.lastName]
+        return fullName.reduce("") { $0.uppercased() + $1.prefix(1).uppercased() }
     }
 }

@@ -44,22 +44,21 @@ class UpdateProfileViewController: UIViewController {
     }
     
     func setupLabels() {
-        let user = viewModel.user!
-        self.idNumberTextField.reactive.text <~ user.idNumberProperty
-        self.firstNameTextField.reactive.text <~ user.firstNameProperty
-        self.middleNameTextField.reactive.text <~ user.middleNameProperty
-        self.lastNameTextField.reactive.text <~ user.lastNameProperty
-        self.emailTextField.reactive.text <~ user.emailProperty
-        self.mobileTextField.reactive.text <~ user.mobileNumberProperty
-        self.landlineTextField.reactive.text <~ user.landlineProperty
+        self.idNumberTextField.reactive.text <~ viewModel.idNumberProperty
+        self.firstNameTextField.reactive.text <~ viewModel.firstNameProperty
+        self.middleNameTextField.reactive.text <~ viewModel.middleNameProperty
+        self.lastNameTextField.reactive.text <~ viewModel.lastNameProperty
+        self.emailTextField.reactive.text <~ viewModel.emailProperty
+        self.mobileTextField.reactive.text <~ viewModel.mobileNumberProperty
+        self.landlineTextField.reactive.text <~ viewModel.landlineProperty
 
-        user.idNumberProperty <~ self.idNumberTextField.reactive.continuousTextValues
-        user.firstNameProperty <~ self.firstNameTextField.reactive.continuousTextValues
-        user.middleNameProperty <~ self.middleNameTextField.reactive.continuousTextValues
-        user.lastNameProperty <~ self.lastNameTextField.reactive.continuousTextValues
-        user.emailProperty <~ self.emailTextField.reactive.continuousTextValues
-        user.mobileNumberProperty <~ self.mobileTextField.reactive.continuousTextValues
-        user.landlineProperty <~ self.landlineTextField.reactive.continuousTextValues
+        viewModel.idNumberProperty <~ self.idNumberTextField.reactive.continuousTextValues
+        viewModel.firstNameProperty <~ self.firstNameTextField.reactive.continuousTextValues
+        viewModel.middleNameProperty <~ self.middleNameTextField.reactive.continuousTextValues
+        viewModel.lastNameProperty <~ self.lastNameTextField.reactive.continuousTextValues
+        viewModel.emailProperty <~ self.emailTextField.reactive.continuousTextValues
+        viewModel.mobileNumberProperty <~ self.mobileTextField.reactive.continuousTextValues
+        viewModel.landlineProperty <~ self.landlineTextField.reactive.continuousTextValues
     }
 
     func setupNavigationBar() {
@@ -78,14 +77,7 @@ class UpdateProfileViewController: UIViewController {
     }
     
     func setupUpdateButton() {
-        let buttonObserver = viewModel.updateButtonObserver {
-            self.updateButton.isEnabled = true
-            self.updateButton.alpha = 1.0
-        } actionIfDisabled: {
-            self.updateButton.isEnabled = false
-            self.updateButton.alpha = 0.5
-        }
-        
+        self.updateButton.setBackgroundColor(color: .lightGray, forState: .disabled)
         let completionObserver = viewModel.updateResponseObserver { message in
             self.delegate?.successUpdate(updatedUser: self.viewModel.user)
             self.activityIndicator.stopAnimating()
@@ -93,17 +85,18 @@ class UpdateProfileViewController: UIViewController {
             Utilities.showGenericOkAlert(title: nil, message: message)
             self.activityIndicator.stopAnimating()
         }
-        
-        self.updateButton.reactive.pressed = CocoaAction(viewModel.update(stateObserver: buttonObserver, completionObserver: completionObserver)) { sender in
+        let onStart = {
             self.activityIndicator.startAnimating()
         }
+        
+        self.updateButton.reactive.pressed = CocoaAction(viewModel.update(onStart: onStart, completionObserver: completionObserver))
     }
 }
 
 extension UpdateProfileViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let allowedCharacters = CharacterSet.decimalDigits
-        let characterSet = CharacterSet(charactersIn: string)
+        let allowedCharacters = CharacterSet(charactersIn: "0123456789+")
+        var characterSet = CharacterSet(charactersIn: string)
         return allowedCharacters.isSuperset(of: characterSet)
     }
     

@@ -36,14 +36,7 @@ class LoginViewController: UIViewController {
     }
 
     func setupLoginButton() {
-        let buttonObserver = viewModel.loginButtonObserver {
-            self.loginButton.isEnabled = true
-            self.loginButton.alpha = 1.0
-        } actionIfDisabled: {
-            self.loginButton.isEnabled = false
-            self.loginButton.alpha = 0.5
-        }
-        
+        self.loginButton.setBackgroundColor(color: .lightGray, forState: .disabled)
         let completionObserver = viewModel.loginResponseObserver { user in
             self.delegate?.login(user: user)
             self.activityIndicator.stopAnimating()
@@ -52,8 +45,11 @@ class LoginViewController: UIViewController {
             self.activityIndicator.stopAnimating()
         }
         
-        self.loginButton.reactive.pressed = CocoaAction(viewModel.loginAction(stateObserver: buttonObserver, completionObserver: completionObserver)) { sender in self.activityIndicator.startAnimating()
+        let onStart = {
+            self.activityIndicator.startAnimating()
         }
+        
+        self.loginButton.reactive.pressed = CocoaAction(viewModel.loginAction(onStart: onStart, completionObserver: completionObserver))
     }
     
     func setupSignInButton() {
@@ -64,7 +60,6 @@ class LoginViewController: UIViewController {
             }
         })
     }
-    
 }
 
 protocol LoginViewControllerDelegate: AnyObject {

@@ -25,6 +25,7 @@
 		CFAE4EC3264E6A49007C6BCF /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4EC2264E6A49007C6BCF /* MainCoordinator.swift */; };
 		CFAE4EC5264E6A55007C6BCF /* UpdateCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4EC4264E6A55007C6BCF /* UpdateCoordinator.swift */; };
 		CFAE4EC926539484007C6BCF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4EC826539484007C6BCF /* NetworkError.swift */; };
+		CFAE4ECB265612FE007C6BCF /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4ECA265612FE007C6BCF /* UIView+Extension.swift */; };
 		CFBA7E4B2643CF9100FBAA0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA7E4A2643CF9100FBAA0D /* AppDelegate.swift */; };
 		CFBA7E4D2643CF9100FBAA0D /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA7E4C2643CF9100FBAA0D /* DocumentBrowserViewController.swift */; };
 		CFBA7E4F2643CF9100FBAA0D /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA7E4E2643CF9100FBAA0D /* DocumentViewController.swift */; };
@@ -79,6 +80,7 @@
 		CFAE4EC2264E6A49007C6BCF /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		CFAE4EC4264E6A55007C6BCF /* UpdateCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCoordinator.swift; sourceTree = "<group>"; };
 		CFAE4EC826539484007C6BCF /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		CFAE4ECA265612FE007C6BCF /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		CFBA7E472643CF9100FBAA0D /* TeraSystemsExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeraSystemsExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBA7E4A2643CF9100FBAA0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFBA7E4C2643CF9100FBAA0D /* DocumentBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				CFAE4EAF2645147C007C6BCF /* CodableObjectFactory.swift */,
 				CFAE4EB326451E0F007C6BCF /* Utilities.swift */,
 				CFAE4EC826539484007C6BCF /* NetworkError.swift */,
+				CFAE4ECA265612FE007C6BCF /* UIView+Extension.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				CFBA7E4D2643CF9100FBAA0D /* DocumentBrowserViewController.swift in Sources */,
 				CFAE4EA12643F24F007C6BCF /* UpdateProfileViewController.swift in Sources */,
 				CFAE4EB8264910EC007C6BCF /* UpdateProfileViewModel.swift in Sources */,
+				CFAE4ECB265612FE007C6BCF /* UIView+Extension.swift in Sources */,
 				CFAE4EAC2644FBCC007C6BCF /* Constants.swift in Sources */,
 				CFAE4EA52644F40D007C6BCF /* UpdateCompletedViewController.swift in Sources */,
 				CFAE4EBB264917FA007C6BCF /* Coordinator.swift in Sources */,
@@ -582,7 +586,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -637,7 +641,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -653,7 +657,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 847YLVY9X7;
 				INFOPLIST_FILE = TeraSystemsExercise/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -661,6 +667,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = terasystems.TeraSystemsExercise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -672,7 +679,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 847YLVY9X7;
 				INFOPLIST_FILE = TeraSystemsExercise/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -680,6 +689,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = terasystems.TeraSystemsExercise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
