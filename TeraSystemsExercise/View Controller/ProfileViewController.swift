@@ -35,10 +35,10 @@ class ProfileViewController: UIViewController {
         setupNavigationBar()
         setupViews()
         setupLabels()
+        setupUpdateButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupUpdateButton()
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         guard let user = delegate?.getUser() else {
             return
@@ -77,16 +77,12 @@ class ProfileViewController: UIViewController {
     }
     
     func setupUpdateButton() {
-        self.updateButton.reactive.pressed = CocoaAction(Action<Void, Void, Never> {
+        self.updateButton.reactive.pressed = CocoaAction(Action<Void, Void, Never> { [weak self] in
             return SignalProducer<Void, Never> { observer, lifetime in
-                self.delegate?.update()
+                self?.delegate?.update()
                 observer.sendCompleted()
             }
         })
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.updateButton.reactive.pressed = nil
     }
 }
 

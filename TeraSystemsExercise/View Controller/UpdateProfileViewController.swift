@@ -32,15 +32,12 @@ class UpdateProfileViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        setupUpdateButton()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupKeyboardInset()
         setupNavigationBar()
         setupLabels()
+        setupUpdateButton()
         
         mobileTextField.delegate = self
         landlineTextField.delegate = self
@@ -80,30 +77,29 @@ class UpdateProfileViewController: UIViewController {
     }
     
     func setupUpdateButton() {
-        self.updateButton.setBackgroundColor(color: .lightGray, forState: .disabled)
-        let completionObserver = viewModel.updateResponseObserver { message in
+        let completionObserver = viewModel.updateResponseObserver { [weak self] message in
+            guard let self = self else {
+                return
+            }
             self.delegate?.successUpdate(updatedUser: self.viewModel.user)
             self.activityIndicator.stopAnimating()
-        } actionOnFail: { message in
+        } actionOnFail: { [weak self] message in
             Utilities.showGenericOkAlert(title: nil, message: message)
-            self.activityIndicator.stopAnimating()
+            self?.activityIndicator.stopAnimating()
         }
-        let onStart = {
-            self.activityIndicator.startAnimating()
+        let onStart: ()->Void = { [weak self] in
+            self?.activityIndicator.startAnimating()
         }
         
+        self.updateButton.setBackgroundColor(color: .lightGray, forState: .disabled)
         self.updateButton.reactive.pressed = CocoaAction(viewModel.update(onStart: onStart, completionObserver: completionObserver))
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.updateButton.reactive.pressed = nil
     }
 }
 
 extension UpdateProfileViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let allowedCharacters = CharacterSet(charactersIn: "0123456789+")
-        var characterSet = CharacterSet(charactersIn: string)
+        let characterSet = CharacterSet(charactersIn: string)
         return allowedCharacters.isSuperset(of: characterSet)
     }
     

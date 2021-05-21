@@ -23,9 +23,9 @@ class UpdateCompletedViewController: UIViewController {
     }
 
     func setupOkButton() {
-        self.okButton.reactive.pressed = CocoaAction(Action<Void, Void, Never> {
+        self.okButton.reactive.pressed = CocoaAction(Action<Void, Void, Never> { [weak self] in
             return SignalProducer<Void, Never> { observer, lifetime in
-                self.delegate?.closeUpdate()
+                self?.delegate?.closeUpdate()
                 observer.sendCompleted()
             }
         })

@@ -21,12 +21,12 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
+        setupSignInButton()
+        setupLoginButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        setupLoginButton()
-        setupSignInButton()
     }
     
     func setup() {
@@ -53,17 +53,12 @@ class LoginViewController: UIViewController {
     }
     
     func setupSignInButton() {
-        self.signInButton.reactive.pressed = CocoaAction(Action<Void, Void, Never> {
+        self.signInButton.reactive.pressed = CocoaAction(Action<Void, Void, Never> { [weak self] in
             return SignalProducer<Void, Never> { observer, lifetime in
-                self.delegate?.signIn()
+                self?.delegate?.signIn()
                 observer.sendCompleted()
             }
         })
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.signInButton.reactive.pressed = nil
-        self.loginButton.reactive.pressed = nil
     }
 }
 
