@@ -9,7 +9,7 @@ import UIKit
 import ReactiveSwift
 
 class ProfileViewModel {
-    private(set) var user: MutableProperty<User>!
+    let user: MutableProperty<User>!
     
     init(user: User) {
         self.user = MutableProperty<User>(user)

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import ReactiveCocoa
+import ReactiveSwift
 
 class UpdateCompletedViewController: UIViewController {
     @IBOutlet weak var okButton: UIButton!
@@ -13,16 +15,23 @@ class UpdateCompletedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Success"
-        setupOkButton()
         navigationItem.setHidesBackButton(true, animated: false)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setupOkButton()
     }
 
     func setupOkButton() {
-        self.okButton.reactive.controlEvents(.touchUpInside).observeValues { button in
-            guard button == self.okButton else {
-                return
+        self.okButton.reactive.pressed = CocoaAction(Action<Void, Void, Never> {
+            return SignalProducer<Void, Never> { observer, lifetime in
+                self.delegate?.closeUpdate()
+                observer.sendCompleted()
             }
-            self.delegate?.closeUpdate()
-        }
+        })
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.okButton.reactive.pressed = nil
     }
 }

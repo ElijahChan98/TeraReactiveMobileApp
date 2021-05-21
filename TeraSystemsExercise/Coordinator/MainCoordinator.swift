@@ -10,7 +10,7 @@ import UIKit
 class MainCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
-    unowned var user: User!
+    var user: User!
     weak var parent: LoginCoordinator?
     
     init(navigationController: UINavigationController) {
@@ -52,9 +52,8 @@ extension MainCoordinator: ProfileViewControllerDelegate{
         guard let parentNavController = parent?.navigationController else {
             return
         }
-        self.user = nil
-        (UIApplication.shared.delegate as? AppDelegate)?.changeRootViewController(parentNavController)
         parent?.childDidFinish(self)
+        (UIApplication.shared.delegate as? AppDelegate)?.changeRootViewController(parentNavController)
     }
     
     func getUser() -> User {

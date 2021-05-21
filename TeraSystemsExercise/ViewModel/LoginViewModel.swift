@@ -10,7 +10,6 @@ import ReactiveSwift
 import ReactiveCocoa
 
 class LoginViewModel {
-    unowned var user: User!
     var usernameProperty = MutableProperty<String>("")
     var passwordProperty = MutableProperty<String>("")
     
@@ -27,7 +26,6 @@ class LoginViewModel {
                         observer.send(error: .failed(loginResponse.message!))
                         return
                     }
-                    self.user = loginResponse.user
                     observer.send(value: loginResponse.user!)
                     observer.sendCompleted()
                 }

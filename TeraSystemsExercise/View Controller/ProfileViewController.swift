@@ -18,7 +18,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var idNumberLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var mobileNumberLabel: UILabel!
-    var viewModel: ProfileViewModel!
+    var viewModel: ProfileViewModel! 
     weak var delegate: ProfileViewControllerDelegate?
     
     init(viewModel: ProfileViewModel) {
@@ -33,12 +33,13 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
-        setupUpdateButton()
         setupViews()
         setupLabels()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        setupUpdateButton()
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
         guard let user = delegate?.getUser() else {
             return
         }
@@ -67,7 +68,7 @@ class ProfileViewController: UIViewController {
     
     func setupLabels() {
         self.viewModel.user.map { user in
-            self.initialsLabel.reactive.text <~ user.map({$0.email})
+            self.idNumberLabel.reactive.text <~ user.map({$0.idNumber})
             self.fullNameLabel.reactive.text <~ user.map({$0.fullName})
             self.initialsLabel.reactive.text <~ user.map({$0.initials})
             self.emailLabel.reactive.text <~ user.map({$0.email})
@@ -82,6 +83,10 @@ class ProfileViewController: UIViewController {
                 observer.sendCompleted()
             }
         })
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.updateButton.reactive.pressed = nil
     }
 }
 

@@ -25,14 +25,14 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        setupLoginButton()
+        setupSignInButton()
     }
     
     func setup() {
         passwordTextField.isSecureTextEntry = true
         viewModel.usernameProperty <~ userNameTextField.reactive.continuousTextValues
         viewModel.passwordProperty <~ passwordTextField.reactive.continuousTextValues
-        setupLoginButton()
-        setupSignInButton()
     }
 
     func setupLoginButton() {
@@ -59,6 +59,11 @@ class LoginViewController: UIViewController {
                 observer.sendCompleted()
             }
         })
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.signInButton.reactive.pressed = nil
+        self.loginButton.reactive.pressed = nil
     }
 }
 

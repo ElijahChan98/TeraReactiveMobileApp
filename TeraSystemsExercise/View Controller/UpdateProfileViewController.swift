@@ -32,12 +32,15 @@ class UpdateProfileViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setupUpdateButton()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupKeyboardInset()
         setupNavigationBar()
         setupLabels()
-        setupUpdateButton()
         
         mobileTextField.delegate = self
         landlineTextField.delegate = self
@@ -90,6 +93,10 @@ class UpdateProfileViewController: UIViewController {
         }
         
         self.updateButton.reactive.pressed = CocoaAction(viewModel.update(onStart: onStart, completionObserver: completionObserver))
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.updateButton.reactive.pressed = nil
     }
 }
 
