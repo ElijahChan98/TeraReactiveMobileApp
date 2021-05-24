@@ -27,6 +27,15 @@ class RequestManager {
         }
     }
     
+    func fetchTimeLogs(userId: String, completion: @escaping (_ success: Bool, _ response: [String:Any]?) -> ()) {
+        let queryItems = [URLQueryItem(name: "userID", value: userId)]
+        var urlComponents = URLComponents(string: Constants.BASE_URL + Constants.GET_TIME_LOGS)!
+        urlComponents.queryItems = queryItems
+        self.createGenericRequest(url: urlComponents.url!, requestMethod: .post) { (success, response) in
+            completion(success, response)
+        }
+    }
+    
     func update(user: User, completion: @escaping (_ success: Bool, _ response: [String:Any]?) -> ()) {
         let queryItems = [URLQueryItem(name: "userID", value: user.id),
                           URLQueryItem(name: "firstName", value: user.firstName),

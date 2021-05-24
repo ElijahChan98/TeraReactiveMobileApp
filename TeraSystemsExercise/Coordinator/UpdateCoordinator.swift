@@ -11,7 +11,7 @@ class UpdateCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     unowned var user: User!
-    weak var parent: MainCoordinator?
+    weak var parent: ProfileCoordinator?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController

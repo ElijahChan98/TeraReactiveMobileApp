@@ -35,10 +35,10 @@ class LoginCoordinator: Coordinator {
 extension LoginCoordinator: LoginViewControllerDelegate {
     func login(user: User) {
         let navController = UINavigationController()
-        let mainCoordinator = MainCoordinator(navigationController: navController)
-        mainCoordinator.parent = self
-        childCoordinators.append(mainCoordinator)
-        mainCoordinator.start(user: user)
+        let menuTabBarCoordinator = MenuTabBarCoordinator(navigationController: navController)
+        menuTabBarCoordinator.parent = self
+        childCoordinators.append(menuTabBarCoordinator)
+        menuTabBarCoordinator.start(user: user)
     }
     
     func signIn() {
