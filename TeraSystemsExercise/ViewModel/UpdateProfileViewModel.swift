@@ -81,6 +81,5 @@ class UpdateProfileViewModel {
         } interrupted: {
             
         }
-
     }
 }

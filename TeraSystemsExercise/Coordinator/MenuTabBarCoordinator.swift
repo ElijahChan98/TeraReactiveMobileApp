@@ -42,10 +42,10 @@ class MenuTabBarCoordinator: Coordinator {
     func setupTimeLogsCoordinator() {
         let navigationController = UINavigationController()
         let timeLogsCoordinator = TimeLogsCoordinator(navigationController: navigationController)
-        timeLogsCoordinator.start(user: user)
+        timeLogsCoordinator.start()
         timeLogsCoordinator.parent = self
         
-        let timeLogsItem = UITabBarItem(title: "Time Logs", image: nil, selectedImage: nil)
+        let timeLogsItem = UITabBarItem(title: "Time Logs", image: UIImage(named: "timelogs"), selectedImage: nil)
         navigationController.tabBarItem = timeLogsItem
         
         viewControllers.append(navigationController)
@@ -58,7 +58,7 @@ class MenuTabBarCoordinator: Coordinator {
         profileCoordinator.start(user: user)
         profileCoordinator.parent = self
         
-        let profileItem = UITabBarItem(title: "Me", image: nil, selectedImage: nil)
+        let profileItem = UITabBarItem(title: "Me", image: UIImage(named: "profile"), selectedImage: nil)
         navigationController.tabBarItem = profileItem
         
         viewControllers.append(navigationController)
@@ -74,10 +74,9 @@ class MenuTabBarCoordinator: Coordinator {
         for (index, coordinator) in childCoordinators.enumerated() {
             if coordinator === child {
                 childCoordinators.remove(at: index)
-            }
-            
-            if let _ = child as? ProfileCoordinator { //on logout
-                backToLoginScreen()
+                if let _ = child as? ProfileCoordinator { //on logout
+                    backToLoginScreen()
+                }
             }
         }
     }
@@ -87,6 +86,7 @@ class MenuTabBarCoordinator: Coordinator {
             return
         }
         viewControllers = []
+        childCoordinators = []
         parent?.childDidFinish(self)
         (UIApplication.shared.delegate as? AppDelegate)?.changeRootViewController(parentNavController)
     }

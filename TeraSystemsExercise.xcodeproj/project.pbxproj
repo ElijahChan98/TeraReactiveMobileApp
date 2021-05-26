@@ -16,6 +16,17 @@
 		CF103C18265BB1F700411043 /* TimeLogsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF103C17265BB1F700411043 /* TimeLogsCoordinator.swift */; };
 		CF103C1A265BB26100411043 /* TimeLogsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF103C19265BB26100411043 /* TimeLogsViewModel.swift */; };
 		CF103C1C265BB67C00411043 /* TimeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF103C1B265BB67C00411043 /* TimeLog.swift */; };
+		CF103C1F265CA3B400411043 /* TimeLogDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF103C1D265CA3B400411043 /* TimeLogDetailsViewController.swift */; };
+		CF103C20265CA3B400411043 /* TimeLogDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF103C1E265CA3B400411043 /* TimeLogDetailsViewController.xib */; };
+		CF103C22265CA86700411043 /* TimeLogDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF103C21265CA86700411043 /* TimeLogDetailsViewModel.swift */; };
+		CF103C25265CC0E000411043 /* AddTimeLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF103C23265CC0E000411043 /* AddTimeLogViewController.swift */; };
+		CF103C26265CC0E000411043 /* AddTimeLogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF103C24265CC0E000411043 /* AddTimeLogViewController.xib */; };
+		CF103C28265CC66100411043 /* AddTimeLogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF103C27265CC66100411043 /* AddTimeLogViewModel.swift */; };
+		CF103C2B265CCBEB00411043 /* AddTimeLogSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF103C29265CCBEB00411043 /* AddTimeLogSuccessViewController.swift */; };
+		CF103C2C265CCBEB00411043 /* AddTimeLogSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF103C2A265CCBEB00411043 /* AddTimeLogSuccessViewController.xib */; };
+		CF103C2E265CCDD400411043 /* AddTimeLogSuccessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF103C2D265CCDD400411043 /* AddTimeLogSuccessViewModel.swift */; };
+		CF103C30265CF24E00411043 /* AddTimeLogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF103C2F265CF24E00411043 /* AddTimeLogCoordinator.swift */; };
+		CF103C32265E38A000411043 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF103C31265E38A000411043 /* String+Extension.swift */; };
 		CFAE4EA12643F24F007C6BCF /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4E9F2643F24F007C6BCF /* UpdateProfileViewController.swift */; };
 		CFAE4EA22643F24F007C6BCF /* UpdateProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFAE4EA02643F24F007C6BCF /* UpdateProfileViewController.xib */; };
 		CFAE4EA52644F40D007C6BCF /* UpdateCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4EA32644F40D007C6BCF /* UpdateCompletedViewController.swift */; };
@@ -80,6 +91,17 @@
 		CF103C17265BB1F700411043 /* TimeLogsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLogsCoordinator.swift; sourceTree = "<group>"; };
 		CF103C19265BB26100411043 /* TimeLogsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLogsViewModel.swift; sourceTree = "<group>"; };
 		CF103C1B265BB67C00411043 /* TimeLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLog.swift; sourceTree = "<group>"; };
+		CF103C1D265CA3B400411043 /* TimeLogDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLogDetailsViewController.swift; sourceTree = "<group>"; };
+		CF103C1E265CA3B400411043 /* TimeLogDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeLogDetailsViewController.xib; sourceTree = "<group>"; };
+		CF103C21265CA86700411043 /* TimeLogDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLogDetailsViewModel.swift; sourceTree = "<group>"; };
+		CF103C23265CC0E000411043 /* AddTimeLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimeLogViewController.swift; sourceTree = "<group>"; };
+		CF103C24265CC0E000411043 /* AddTimeLogViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTimeLogViewController.xib; sourceTree = "<group>"; };
+		CF103C27265CC66100411043 /* AddTimeLogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimeLogViewModel.swift; sourceTree = "<group>"; };
+		CF103C29265CCBEB00411043 /* AddTimeLogSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimeLogSuccessViewController.swift; sourceTree = "<group>"; };
+		CF103C2A265CCBEB00411043 /* AddTimeLogSuccessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTimeLogSuccessViewController.xib; sourceTree = "<group>"; };
+		CF103C2D265CCDD400411043 /* AddTimeLogSuccessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimeLogSuccessViewModel.swift; sourceTree = "<group>"; };
+		CF103C2F265CF24E00411043 /* AddTimeLogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimeLogCoordinator.swift; sourceTree = "<group>"; };
+		CF103C31265E38A000411043 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		CFAE4E9F2643F24F007C6BCF /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
 		CFAE4EA02643F24F007C6BCF /* UpdateProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateProfileViewController.xib; sourceTree = "<group>"; };
 		CFAE4EA32644F40D007C6BCF /* UpdateCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCompletedViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +211,7 @@
 				CFAE4EB326451E0F007C6BCF /* Utilities.swift */,
 				CFAE4EC826539484007C6BCF /* NetworkError.swift */,
 				CFAE4ECA265612FE007C6BCF /* UIView+Extension.swift */,
+				CF103C31265E38A000411043 /* String+Extension.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -202,6 +225,7 @@
 				CFAE4EC4264E6A55007C6BCF /* UpdateCoordinator.swift */,
 				CF103C08265B818E00411043 /* MenuTabBarCoordinator.swift */,
 				CF103C17265BB1F700411043 /* TimeLogsCoordinator.swift */,
+				CF103C2F265CF24E00411043 /* AddTimeLogCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -290,6 +314,12 @@
 				CF103C0A265B821100411043 /* MenuTabBarController.swift */,
 				CF103C0E265BAED100411043 /* TimeLogsViewController.swift */,
 				CF103C0F265BAED100411043 /* TimeLogsViewController.xib */,
+				CF103C1D265CA3B400411043 /* TimeLogDetailsViewController.swift */,
+				CF103C1E265CA3B400411043 /* TimeLogDetailsViewController.xib */,
+				CF103C23265CC0E000411043 /* AddTimeLogViewController.swift */,
+				CF103C24265CC0E000411043 /* AddTimeLogViewController.xib */,
+				CF103C29265CCBEB00411043 /* AddTimeLogSuccessViewController.swift */,
+				CF103C2A265CCBEB00411043 /* AddTimeLogSuccessViewController.xib */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -311,6 +341,9 @@
 				CFAE4EB526453EEF007C6BCF /* ProfileViewModel.swift */,
 				CFAE4EB7264910EC007C6BCF /* UpdateProfileViewModel.swift */,
 				CF103C19265BB26100411043 /* TimeLogsViewModel.swift */,
+				CF103C21265CA86700411043 /* TimeLogDetailsViewModel.swift */,
+				CF103C27265CC66100411043 /* AddTimeLogViewModel.swift */,
+				CF103C2D265CCDD400411043 /* AddTimeLogSuccessViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -421,13 +454,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFBA7E832643D20C00FBAA0D /* LoginViewController.xib in Resources */,
+				CF103C26265CC0E000411043 /* AddTimeLogViewController.xib in Resources */,
 				CFAE4EA22643F24F007C6BCF /* UpdateProfileViewController.xib in Resources */,
 				CFBA7E592643CF9200FBAA0D /* LaunchScreen.storyboard in Resources */,
 				CFBA7E562643CF9200FBAA0D /* Assets.xcassets in Resources */,
 				CFBA7E872643E4CB00FBAA0D /* ProfileViewController.xib in Resources */,
+				CF103C2C265CCBEB00411043 /* AddTimeLogSuccessViewController.xib in Resources */,
 				CFBA7E542643CF9100FBAA0D /* Main.storyboard in Resources */,
 				CF103C16265BB09700411043 /* TimeLogCell.xib in Resources */,
 				CF103C11265BAED100411043 /* TimeLogsViewController.xib in Resources */,
+				CF103C20265CA3B400411043 /* TimeLogDetailsViewController.xib in Resources */,
 				CFAE4EA62644F40D007C6BCF /* UpdateCompletedViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -497,21 +533,27 @@
 			files = (
 				CF103C10265BAED100411043 /* TimeLogsViewController.swift in Sources */,
 				CFBA7E862643E4CB00FBAA0D /* ProfileViewController.swift in Sources */,
+				CF103C30265CF24E00411043 /* AddTimeLogCoordinator.swift in Sources */,
 				CFBA7E512643CF9100FBAA0D /* Document.swift in Sources */,
 				CFAE4EC926539484007C6BCF /* NetworkError.swift in Sources */,
+				CF103C25265CC0E000411043 /* AddTimeLogViewController.swift in Sources */,
 				CF103C1A265BB26100411043 /* TimeLogsViewModel.swift in Sources */,
 				CFAE4EB426451E10007C6BCF /* Utilities.swift in Sources */,
 				CFAE4EB02645147C007C6BCF /* CodableObjectFactory.swift in Sources */,
 				CFBA7E4F2643CF9100FBAA0D /* DocumentViewController.swift in Sources */,
 				CFAE4EBF264E56DC007C6BCF /* LoginResponse.swift in Sources */,
+				CF103C28265CC66100411043 /* AddTimeLogViewModel.swift in Sources */,
 				CF103C18265BB1F700411043 /* TimeLogsCoordinator.swift in Sources */,
+				CF103C2B265CCBEB00411043 /* AddTimeLogSuccessViewController.swift in Sources */,
 				CFBA7E4D2643CF9100FBAA0D /* DocumentBrowserViewController.swift in Sources */,
 				CF103C15265BB09700411043 /* TimeLogCell.swift in Sources */,
+				CF103C1F265CA3B400411043 /* TimeLogDetailsViewController.swift in Sources */,
 				CFAE4EA12643F24F007C6BCF /* UpdateProfileViewController.swift in Sources */,
 				CFAE4EB8264910EC007C6BCF /* UpdateProfileViewModel.swift in Sources */,
 				CFAE4ECB265612FE007C6BCF /* UIView+Extension.swift in Sources */,
 				CF103C09265B818F00411043 /* MenuTabBarCoordinator.swift in Sources */,
 				CFAE4EAC2644FBCC007C6BCF /* Constants.swift in Sources */,
+				CF103C32265E38A000411043 /* String+Extension.swift in Sources */,
 				CFAE4EA52644F40D007C6BCF /* UpdateCompletedViewController.swift in Sources */,
 				CFAE4EBB264917FA007C6BCF /* Coordinator.swift in Sources */,
 				CF103C0C265B821100411043 /* MenuTabBarController.swift in Sources */,
@@ -521,7 +563,9 @@
 				CF103C1C265BB67C00411043 /* TimeLog.swift in Sources */,
 				CFAE4EC5264E6A55007C6BCF /* UpdateCoordinator.swift in Sources */,
 				CFAE4EA92644F987007C6BCF /* RequestManager.swift in Sources */,
+				CF103C22265CA86700411043 /* TimeLogDetailsViewModel.swift in Sources */,
 				CFBA7E822643D20C00FBAA0D /* LoginViewController.swift in Sources */,
+				CF103C2E265CCDD400411043 /* AddTimeLogSuccessViewModel.swift in Sources */,
 				CFBA7E4B2643CF9100FBAA0D /* AppDelegate.swift in Sources */,
 				CFAE4EAE264511B7007C6BCF /* User.swift in Sources */,
 				CFAE4EC1264E6A41007C6BCF /* LoginCoordinator.swift in Sources */,

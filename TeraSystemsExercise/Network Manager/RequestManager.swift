@@ -15,6 +15,7 @@ public enum RequestMethod: String {
 
 class RequestManager {
     static let shared = RequestManager()
+    var currentUserId: String? = ""
     
     func login(username: String, password: String, completion: @escaping (_ success: Bool, _ response: [String:Any]?) -> ()) {
         let queryItems = [URLQueryItem(name: "userID", value: username),
@@ -30,6 +31,17 @@ class RequestManager {
     func fetchTimeLogs(userId: String, completion: @escaping (_ success: Bool, _ response: [String:Any]?) -> ()) {
         let queryItems = [URLQueryItem(name: "userID", value: userId)]
         var urlComponents = URLComponents(string: Constants.BASE_URL + Constants.GET_TIME_LOGS)!
+        urlComponents.queryItems = queryItems
+        self.createGenericRequest(url: urlComponents.url!, requestMethod: .post) { (success, response) in
+            completion(success, response)
+        }
+    }
+    
+    func addTimeLog(userId: String, type: String, completion: @escaping (_ success: Bool, _ response: [String:Any]?) -> ()) {
+        let queryItems = [URLQueryItem(name: "userID", value: userId),
+                          URLQueryItem(name: "type", value: type)
+        ]
+        var urlComponents = URLComponents(string: Constants.BASE_URL + Constants.ADD_TIME_LOG)!
         urlComponents.queryItems = queryItems
         self.createGenericRequest(url: urlComponents.url!, requestMethod: .post) { (success, response) in
             completion(success, response)

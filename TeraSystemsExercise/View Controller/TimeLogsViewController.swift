@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ReactiveSwift
 
 class TimeLogsViewController: UIViewController {
     @IBOutlet weak var labelView: UIStackView!
@@ -30,7 +31,10 @@ class TimeLogsViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(UINib(nibName: "TimeLogCell", bundle: nil), forCellReuseIdentifier: "Cell")
-        
+        reloadTableView()
+    }
+    
+    func reloadTableView() {
         self.viewModel.fetchTimeLogs {
             self.tableView.reloadData()
         }
@@ -43,14 +47,21 @@ class TimeLogsViewController: UIViewController {
     
     func setupNavigationBar() {
         self.navigationItem.title = "Time Logs"
+        
+        let item = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = item
+        self.navigationItem.backBarButtonItem?.tintColor = UIColor.white
+        
         let addButton = UIBarButtonItem(title: "+", style: .done, target: self, action: #selector(self.addLog))
         addButton.tintColor = UIColor.white
         navigationItem.rightBarButtonItem = addButton
+        
         self.navigationController?.navigationBar.barTintColor = UIColor.systemBlue
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
     @objc func addLog() {
+        delegate?.addTimeLog()
     }
     
 }
@@ -61,9 +72,17 @@ extension TimeLogsViewController: UITableViewDelegate, UITableViewDataSource {
         guard let timeLog = viewModel.timeLogs?[indexPath.row] else {
             return UITableViewCell()
         }
-        cell.dateLabel.text = timeLog.date
-        cell.inLabel.text = timeLog.timeIn ?? "N/A"
-        cell.outLabel.text = timeLog.timeOut ?? "N/A"
+        cell.dateLabel.reactive.text <~ timeLog.map({$0?.date.stringDate(in: "MM/dd/yyyy", out: "MMMM d")})
+        
+        cell.inLabel.reactive.text <~ timeLog.map({$0?.timeIn?.stringDate(in: "HH:mm:ss", out: "h:mm a") ?? "N/A"})
+        cell.inLabel.reactive.textColor <~ timeLog.map({
+            $0?.timeIn == nil ? UIColor.red : UIColor.black
+        })
+        
+        cell.outLabel.reactive.text <~ timeLog.map({$0?.timeOut?.stringDate(in: "HH:mm:ss", out: "h:mm a") ?? "N/A"})
+        cell.outLabel.reactive.textColor <~ timeLog.map({
+            $0?.timeOut == nil ? UIColor.red : UIColor.black
+        })
         return cell
     }
     
@@ -74,8 +93,16 @@ extension TimeLogsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60.0
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let timeLog = viewModel.timeLogs?[indexPath.row].value else {
+            return
+        }
+        delegate?.showTimeLogDetails(timeLog: timeLog)
+    }
 }
 
 protocol TimeLogsDelegate: AnyObject {
-    
+    func showTimeLogDetails(timeLog: TimeLog)
+    func addTimeLog()
 }

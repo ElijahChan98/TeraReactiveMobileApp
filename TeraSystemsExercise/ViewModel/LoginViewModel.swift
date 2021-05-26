@@ -26,6 +26,7 @@ class LoginViewModel {
                         observer.send(error: .failed(loginResponse.message!))
                         return
                     }
+                    RequestManager.shared.currentUserId = loginResponse.user?.id
                     observer.send(value: loginResponse.user!)
                     observer.sendCompleted()
                 }

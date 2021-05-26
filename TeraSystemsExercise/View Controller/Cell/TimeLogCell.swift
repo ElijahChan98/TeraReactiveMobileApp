@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ReactiveSwift
 
 class TimeLogCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
@@ -14,7 +15,6 @@ class TimeLogCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

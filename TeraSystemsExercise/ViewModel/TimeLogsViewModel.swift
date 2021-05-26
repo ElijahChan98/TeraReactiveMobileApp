@@ -6,17 +6,16 @@
 //
 
 import UIKit
+import ReactiveSwift
 
 class TimeLogsViewModel {
-    var user: User!
-    var timeLogs: [TimeLog]?
+    var timeLogs: [MutableProperty<TimeLog?>]?
     
-    init(user: User) {
-        self.user = user
-    }
-    //obviously, make this reactive
     func fetchTimeLogs(completion: @escaping ()->()) {
-        RequestManager.shared.fetchTimeLogs(userId: user.id) { success, response in
+        guard let userId = RequestManager.shared.currentUserId else {
+            return
+        }
+        RequestManager.shared.fetchTimeLogs(userId: userId) { success, response in
             guard let payload = response,
                   let loginResponse: LoginResponse = CodableObjectFactory.objectFromPayload(payload) else {
                 return
@@ -24,7 +23,7 @@ class TimeLogsViewModel {
             guard loginResponse.status == "0" else {
                 return
             }
-            self.timeLogs = loginResponse.timeLogs
+            self.timeLogs = loginResponse.timeLogs?.map({return MutableProperty<TimeLog?>($0)})
             completion()
         }
     }
