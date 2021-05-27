@@ -13,9 +13,11 @@ struct LoginResponse: Codable {
         case message
         case user
         case timeLogs
+        case leaves
     }
     var status: String
     var message: String?
     var user: User?
     var timeLogs: [TimeLog]?
+    var leaves: [Leaves]?
 }

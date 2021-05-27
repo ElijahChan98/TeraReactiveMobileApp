@@ -27,6 +27,17 @@
 		CF103C2E265CCDD400411043 /* AddTimeLogSuccessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF103C2D265CCDD400411043 /* AddTimeLogSuccessViewModel.swift */; };
 		CF103C30265CF24E00411043 /* AddTimeLogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF103C2F265CF24E00411043 /* AddTimeLogCoordinator.swift */; };
 		CF103C32265E38A000411043 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF103C31265E38A000411043 /* String+Extension.swift */; };
+		CF6FA46A265F55E5006D2C03 /* LeavesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6FA468265F55E5006D2C03 /* LeavesViewController.swift */; };
+		CF6FA46B265F55E5006D2C03 /* LeavesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF6FA469265F55E5006D2C03 /* LeavesViewController.xib */; };
+		CF6FA46E265F5D90006D2C03 /* LeaveDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6FA46C265F5D90006D2C03 /* LeaveDetailCell.swift */; };
+		CF6FA46F265F5D90006D2C03 /* LeaveDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF6FA46D265F5D90006D2C03 /* LeaveDetailCell.xib */; };
+		CF6FA471265F6AB2006D2C03 /* LeavesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6FA470265F6AB2006D2C03 /* LeavesViewModel.swift */; };
+		CF6FA473265F6D6F006D2C03 /* Leaves.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6FA472265F6D6F006D2C03 /* Leaves.swift */; };
+		CF6FA475265F6EA9006D2C03 /* LeavesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6FA474265F6EA9006D2C03 /* LeavesCoordinator.swift */; };
+		CF6FA478265F831C006D2C03 /* FileLeaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6FA476265F831C006D2C03 /* FileLeaveViewController.swift */; };
+		CF6FA479265F831C006D2C03 /* FileLeaveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF6FA477265F831C006D2C03 /* FileLeaveViewController.xib */; };
+		CF6FA47C265F90B5006D2C03 /* FileLeaveDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6FA47B265F90B5006D2C03 /* FileLeaveDelegates.swift */; };
+		CF6FA47E265F91C1006D2C03 /* FileLeaveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6FA47D265F91C1006D2C03 /* FileLeaveViewModel.swift */; };
 		CFAE4EA12643F24F007C6BCF /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4E9F2643F24F007C6BCF /* UpdateProfileViewController.swift */; };
 		CFAE4EA22643F24F007C6BCF /* UpdateProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFAE4EA02643F24F007C6BCF /* UpdateProfileViewController.xib */; };
 		CFAE4EA52644F40D007C6BCF /* UpdateCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE4EA32644F40D007C6BCF /* UpdateCompletedViewController.swift */; };
@@ -102,6 +113,17 @@
 		CF103C2D265CCDD400411043 /* AddTimeLogSuccessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimeLogSuccessViewModel.swift; sourceTree = "<group>"; };
 		CF103C2F265CF24E00411043 /* AddTimeLogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimeLogCoordinator.swift; sourceTree = "<group>"; };
 		CF103C31265E38A000411043 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		CF6FA468265F55E5006D2C03 /* LeavesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeavesViewController.swift; sourceTree = "<group>"; };
+		CF6FA469265F55E5006D2C03 /* LeavesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeavesViewController.xib; sourceTree = "<group>"; };
+		CF6FA46C265F5D90006D2C03 /* LeaveDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveDetailCell.swift; sourceTree = "<group>"; };
+		CF6FA46D265F5D90006D2C03 /* LeaveDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaveDetailCell.xib; sourceTree = "<group>"; };
+		CF6FA470265F6AB2006D2C03 /* LeavesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeavesViewModel.swift; sourceTree = "<group>"; };
+		CF6FA472265F6D6F006D2C03 /* Leaves.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaves.swift; sourceTree = "<group>"; };
+		CF6FA474265F6EA9006D2C03 /* LeavesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeavesCoordinator.swift; sourceTree = "<group>"; };
+		CF6FA476265F831C006D2C03 /* FileLeaveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLeaveViewController.swift; sourceTree = "<group>"; };
+		CF6FA477265F831C006D2C03 /* FileLeaveViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FileLeaveViewController.xib; sourceTree = "<group>"; };
+		CF6FA47B265F90B5006D2C03 /* FileLeaveDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLeaveDelegates.swift; sourceTree = "<group>"; };
+		CF6FA47D265F91C1006D2C03 /* FileLeaveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLeaveViewModel.swift; sourceTree = "<group>"; };
 		CFAE4E9F2643F24F007C6BCF /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
 		CFAE4EA02643F24F007C6BCF /* UpdateProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateProfileViewController.xib; sourceTree = "<group>"; };
 		CFAE4EA32644F40D007C6BCF /* UpdateCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCompletedViewController.swift; sourceTree = "<group>"; };
@@ -191,8 +213,22 @@
 			children = (
 				CF103C13265BB09700411043 /* TimeLogCell.swift */,
 				CF103C14265BB09700411043 /* TimeLogCell.xib */,
+				CF6FA46C265F5D90006D2C03 /* LeaveDetailCell.swift */,
+				CF6FA46D265F5D90006D2C03 /* LeaveDetailCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		CF6FA47A265F907D006D2C03 /* Leaves */ = {
+			isa = PBXGroup;
+			children = (
+				CF6FA468265F55E5006D2C03 /* LeavesViewController.swift */,
+				CF6FA469265F55E5006D2C03 /* LeavesViewController.xib */,
+				CF6FA476265F831C006D2C03 /* FileLeaveViewController.swift */,
+				CF6FA477265F831C006D2C03 /* FileLeaveViewController.xib */,
+				CF6FA47B265F90B5006D2C03 /* FileLeaveDelegates.swift */,
+			);
+			path = Leaves;
 			sourceTree = "<group>";
 		};
 		CFAE4EA72644F96A007C6BCF /* Network Manager */ = {
@@ -226,6 +262,7 @@
 				CF103C08265B818E00411043 /* MenuTabBarCoordinator.swift */,
 				CF103C17265BB1F700411043 /* TimeLogsCoordinator.swift */,
 				CF103C2F265CF24E00411043 /* AddTimeLogCoordinator.swift */,
+				CF6FA474265F6EA9006D2C03 /* LeavesCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -302,6 +339,7 @@
 		CFBA7E7D2643D1D900FBAA0D /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CF6FA47A265F907D006D2C03 /* Leaves */,
 				CF103C12265BB06F00411043 /* Cell */,
 				CFBA7E802643D20C00FBAA0D /* LoginViewController.swift */,
 				CFBA7E812643D20C00FBAA0D /* LoginViewController.xib */,
@@ -330,6 +368,7 @@
 				CFAE4EAD264511B7007C6BCF /* User.swift */,
 				CFAE4EBE264E56DC007C6BCF /* LoginResponse.swift */,
 				CF103C1B265BB67C00411043 /* TimeLog.swift */,
+				CF6FA472265F6D6F006D2C03 /* Leaves.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -344,6 +383,8 @@
 				CF103C21265CA86700411043 /* TimeLogDetailsViewModel.swift */,
 				CF103C27265CC66100411043 /* AddTimeLogViewModel.swift */,
 				CF103C2D265CCDD400411043 /* AddTimeLogSuccessViewModel.swift */,
+				CF6FA470265F6AB2006D2C03 /* LeavesViewModel.swift */,
+				CF6FA47D265F91C1006D2C03 /* FileLeaveViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -462,9 +503,12 @@
 				CF103C2C265CCBEB00411043 /* AddTimeLogSuccessViewController.xib in Resources */,
 				CFBA7E542643CF9100FBAA0D /* Main.storyboard in Resources */,
 				CF103C16265BB09700411043 /* TimeLogCell.xib in Resources */,
+				CF6FA46B265F55E5006D2C03 /* LeavesViewController.xib in Resources */,
+				CF6FA46F265F5D90006D2C03 /* LeaveDetailCell.xib in Resources */,
 				CF103C11265BAED100411043 /* TimeLogsViewController.xib in Resources */,
 				CF103C20265CA3B400411043 /* TimeLogDetailsViewController.xib in Resources */,
 				CFAE4EA62644F40D007C6BCF /* UpdateCompletedViewController.xib in Resources */,
+				CF6FA479265F831C006D2C03 /* FileLeaveViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,10 +583,12 @@
 				CF103C25265CC0E000411043 /* AddTimeLogViewController.swift in Sources */,
 				CF103C1A265BB26100411043 /* TimeLogsViewModel.swift in Sources */,
 				CFAE4EB426451E10007C6BCF /* Utilities.swift in Sources */,
+				CF6FA46E265F5D90006D2C03 /* LeaveDetailCell.swift in Sources */,
 				CFAE4EB02645147C007C6BCF /* CodableObjectFactory.swift in Sources */,
 				CFBA7E4F2643CF9100FBAA0D /* DocumentViewController.swift in Sources */,
 				CFAE4EBF264E56DC007C6BCF /* LoginResponse.swift in Sources */,
 				CF103C28265CC66100411043 /* AddTimeLogViewModel.swift in Sources */,
+				CF6FA475265F6EA9006D2C03 /* LeavesCoordinator.swift in Sources */,
 				CF103C18265BB1F700411043 /* TimeLogsCoordinator.swift in Sources */,
 				CF103C2B265CCBEB00411043 /* AddTimeLogSuccessViewController.swift in Sources */,
 				CFBA7E4D2643CF9100FBAA0D /* DocumentBrowserViewController.swift in Sources */,
@@ -551,10 +597,12 @@
 				CFAE4EA12643F24F007C6BCF /* UpdateProfileViewController.swift in Sources */,
 				CFAE4EB8264910EC007C6BCF /* UpdateProfileViewModel.swift in Sources */,
 				CFAE4ECB265612FE007C6BCF /* UIView+Extension.swift in Sources */,
+				CF6FA47E265F91C1006D2C03 /* FileLeaveViewModel.swift in Sources */,
 				CF103C09265B818F00411043 /* MenuTabBarCoordinator.swift in Sources */,
 				CFAE4EAC2644FBCC007C6BCF /* Constants.swift in Sources */,
 				CF103C32265E38A000411043 /* String+Extension.swift in Sources */,
 				CFAE4EA52644F40D007C6BCF /* UpdateCompletedViewController.swift in Sources */,
+				CF6FA471265F6AB2006D2C03 /* LeavesViewModel.swift in Sources */,
 				CFAE4EBB264917FA007C6BCF /* Coordinator.swift in Sources */,
 				CF103C0C265B821100411043 /* MenuTabBarController.swift in Sources */,
 				CFAE4EB626453EEF007C6BCF /* ProfileViewModel.swift in Sources */,
@@ -562,13 +610,17 @@
 				CFAE4EB2264518ED007C6BCF /* LoginViewModel.swift in Sources */,
 				CF103C1C265BB67C00411043 /* TimeLog.swift in Sources */,
 				CFAE4EC5264E6A55007C6BCF /* UpdateCoordinator.swift in Sources */,
+				CF6FA46A265F55E5006D2C03 /* LeavesViewController.swift in Sources */,
 				CFAE4EA92644F987007C6BCF /* RequestManager.swift in Sources */,
+				CF6FA47C265F90B5006D2C03 /* FileLeaveDelegates.swift in Sources */,
 				CF103C22265CA86700411043 /* TimeLogDetailsViewModel.swift in Sources */,
 				CFBA7E822643D20C00FBAA0D /* LoginViewController.swift in Sources */,
 				CF103C2E265CCDD400411043 /* AddTimeLogSuccessViewModel.swift in Sources */,
 				CFBA7E4B2643CF9100FBAA0D /* AppDelegate.swift in Sources */,
+				CF6FA478265F831C006D2C03 /* FileLeaveViewController.swift in Sources */,
 				CFAE4EAE264511B7007C6BCF /* User.swift in Sources */,
 				CFAE4EC1264E6A41007C6BCF /* LoginCoordinator.swift in Sources */,
+				CF6FA473265F6D6F006D2C03 /* Leaves.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

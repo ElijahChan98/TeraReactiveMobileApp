@@ -28,7 +28,11 @@ class RequestManager {
         }
     }
     
-    func fetchTimeLogs(userId: String, completion: @escaping (_ success: Bool, _ response: [String:Any]?) -> ()) {
+    func fetchTimeLogs(completion: @escaping (_ success: Bool, _ response: [String:Any]?) -> ()) {
+        guard let userId = self.currentUserId else {
+            completion(false, nil)
+            return
+        }
         let queryItems = [URLQueryItem(name: "userID", value: userId)]
         var urlComponents = URLComponents(string: Constants.BASE_URL + Constants.GET_TIME_LOGS)!
         urlComponents.queryItems = queryItems
@@ -42,6 +46,19 @@ class RequestManager {
                           URLQueryItem(name: "type", value: type)
         ]
         var urlComponents = URLComponents(string: Constants.BASE_URL + Constants.ADD_TIME_LOG)!
+        urlComponents.queryItems = queryItems
+        self.createGenericRequest(url: urlComponents.url!, requestMethod: .post) { (success, response) in
+            completion(success, response)
+        }
+    }
+    
+    func getLeaves(completion: @escaping (_ success: Bool, _ response: [String:Any]?) -> ()) {
+        guard let userId = self.currentUserId else {
+            completion(false, nil)
+            return
+        }
+        let queryItems = [URLQueryItem(name: "userID", value: userId)]
+        var urlComponents = URLComponents(string: Constants.BASE_URL + Constants.GET_LEAVES)!
         urlComponents.queryItems = queryItems
         self.createGenericRequest(url: urlComponents.url!, requestMethod: .post) { (success, response) in
             completion(success, response)

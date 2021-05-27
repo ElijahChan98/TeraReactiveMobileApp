@@ -1,18 +1,18 @@
 //
-//  TimeLogsViewModel.swift
+//  LeavesViewModel.swift
 //  TeraSystemsExercise
 //
-//  Created by Elijah Tristan H. Chan on 5/24/21.
+//  Created by Elijah Tristan H. Chan on 5/27/21.
 //
 
 import UIKit
 import ReactiveSwift
 
-class TimeLogsViewModel {
-    var timeLogs: [MutableProperty<TimeLog?>]?
+class LeavesViewModel {
+    var leaves: [MutableProperty<Leaves?>]?
     
-    func fetchTimeLogs(completion: @escaping ()->()) {
-        RequestManager.shared.fetchTimeLogs() { success, response in
+    func getLeaves(completion: @escaping ()->()) {
+        RequestManager.shared.getLeaves() { success, response in
             guard let payload = response,
                   let loginResponse: LoginResponse = CodableObjectFactory.objectFromPayload(payload) else {
                 return
@@ -20,7 +20,7 @@ class TimeLogsViewModel {
             guard loginResponse.status == "0" else {
                 return
             }
-            self.timeLogs = loginResponse.timeLogs?.map({return MutableProperty<TimeLog?>($0)})
+            self.leaves = loginResponse.leaves?.map({return MutableProperty<Leaves?>($0)})
             completion()
         }
     }

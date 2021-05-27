@@ -11,4 +11,5 @@ struct Constants {
     static let UPDATE = "/AppTrainingUpdateProfile.htm"
     static let GET_TIME_LOGS = "/AppTrainingGetTimeLogs.htm"
     static let ADD_TIME_LOG = "/AppTrainingAddTimeLog.htm"
+    static let GET_LEAVES = "/AppTrainingGetLeaves.htm"
 }

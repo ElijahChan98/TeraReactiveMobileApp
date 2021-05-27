@@ -20,11 +20,7 @@ class MenuTabBarCoordinator: Coordinator {
     
     func start() {
         setupTimeLogsCoordinator()
-        
-        let leavesVC = UIViewController()
-        let leavesItem = UITabBarItem(title: "Leaves", image: nil, selectedImage: nil)
-        leavesVC.tabBarItem = leavesItem
-        viewControllers.append(leavesVC)
+        setupLeavesCoordinator()
         
         let clientsVC = UIViewController()
         let clientsItem = UITabBarItem(title: "Clients", image: nil, selectedImage: nil)
@@ -50,6 +46,19 @@ class MenuTabBarCoordinator: Coordinator {
         
         viewControllers.append(navigationController)
         childCoordinators.append(timeLogsCoordinator)
+    }
+    
+    func setupLeavesCoordinator() {
+        let navigationController = UINavigationController()
+        let leavesCoordinator = LeavesCoordinator(navigationController: navigationController)
+        leavesCoordinator.start()
+        leavesCoordinator.parent = self
+        
+        let leavesItem = UITabBarItem(title: "Leaves", image: nil, selectedImage: nil)
+        navigationController.tabBarItem = leavesItem
+        
+        viewControllers.append(navigationController)
+        childCoordinators.append(leavesCoordinator)
     }
     
     func setupProfileCoordinator() {
