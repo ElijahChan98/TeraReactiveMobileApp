@@ -30,6 +30,19 @@ struct Leaves: Codable{
         }
     }
     
+    var timeValue: String {
+        switch time {
+        case "Whole Day":
+            return "1"
+        case "Afternoon":
+            return "2"
+        case "Morning":
+            return "3"
+        default:
+            return "0"
+        }
+    }
+    
     func totalNumberOfDays() -> String {
         guard self.time == "1" else {
             return "0.5"
@@ -47,6 +60,12 @@ struct Leaves: Codable{
         else {
             return "0"
         }
-        
+    }
+    
+    init() {
+        self.type = ""
+        self.dateFrom = ""
+        self.dateTo = ""
+        self.time = ""
     }
 }

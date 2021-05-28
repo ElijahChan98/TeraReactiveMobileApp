@@ -35,8 +35,9 @@ class LeavesCoordinator: Coordinator {
 
 extension LeavesCoordinator: LeavesDelegate {
     func fileLeave() {
-        let viewModel = FileLeaveViewModel()
-        let fileLeaveVC = FileLeaveViewController(viewModel: viewModel)
-        self.navigationController.pushViewController(fileLeaveVC, animated: true)
+        let child = FileLeaveCoordinator(navigationController: UINavigationController())
+        child.parent = self
+        childCoordinators.append(child)
+        child.start()
     }
 }

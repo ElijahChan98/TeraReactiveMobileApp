@@ -19,10 +19,10 @@ class AddTimeLogCoordinator: Coordinator {
     func start() {
         let addTimeLogVC = AddTimeLogViewController()
         addTimeLogVC.delegate = self
-        let testNav = UINavigationController(rootViewController: addTimeLogVC)
-        testNav.modalPresentationStyle = .fullScreen
-        self.navigationController = testNav
-        parent?.navigationController.present(testNav, animated: true, completion: nil)
+        let nav = UINavigationController(rootViewController: addTimeLogVC)
+        nav.modalPresentationStyle = .fullScreen
+        self.navigationController = nav
+        parent?.navigationController.present(nav, animated: true, completion: nil)
     }
 }
 

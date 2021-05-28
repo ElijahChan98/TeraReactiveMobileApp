@@ -65,6 +65,24 @@ class RequestManager {
         }
     }
     
+    func fileLeave(leave: Leaves, completion: @escaping (_ success: Bool, _ response: [String:Any]?) -> ()) {
+        guard let userId = self.currentUserId else {
+            completion(false, nil)
+            return
+        }
+        let queryItems = [URLQueryItem(name: "userID", value: userId),
+                          URLQueryItem(name: "type", value: leave.type),
+                          URLQueryItem(name: "dateFrom", value: leave.dateFrom),
+                          URLQueryItem(name: "dateTo", value: leave.dateTo),
+                          URLQueryItem(name: "time", value: leave.timeValue),
+        ]
+        var urlComponents = URLComponents(string: Constants.BASE_URL + Constants.ADD_TIME_LOG)!
+        urlComponents.queryItems = queryItems
+        self.createGenericRequest(url: urlComponents.url!, requestMethod: .post) { (success, response) in
+            completion(success, response)
+        }
+    }
+    
     func update(user: User, completion: @escaping (_ success: Bool, _ response: [String:Any]?) -> ()) {
         let queryItems = [URLQueryItem(name: "userID", value: user.id),
                           URLQueryItem(name: "firstName", value: user.firstName),

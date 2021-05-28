@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF0B62182660D0310022143F /* FileLeaveCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0B62172660D0310022143F /* FileLeaveCoordinator.swift */; };
+		CF0B621B2660E5290022143F /* FileLeaveSuccessfulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0B62192660E5290022143F /* FileLeaveSuccessfulViewController.swift */; };
+		CF0B621C2660E5290022143F /* FileLeaveSuccessfulViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF0B621A2660E5290022143F /* FileLeaveSuccessfulViewController.xib */; };
+		CF0B621E2660E8230022143F /* FileLeaveSuccessfulViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0B621D2660E8230022143F /* FileLeaveSuccessfulViewModel.swift */; };
 		CF103C09265B818F00411043 /* MenuTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF103C08265B818E00411043 /* MenuTabBarCoordinator.swift */; };
 		CF103C0C265B821100411043 /* MenuTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF103C0A265B821100411043 /* MenuTabBarController.swift */; };
 		CF103C10265BAED100411043 /* TimeLogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF103C0E265BAED100411043 /* TimeLogsViewController.swift */; };
@@ -93,6 +97,10 @@
 /* Begin PBXFileReference section */
 		1BC31EE420B98564D252EE8B /* Pods_TeraSystemsExercise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeraSystemsExercise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8BB62458CF1F1F3CC4F2E49 /* Pods-TeraSystemsExercise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeraSystemsExercise.release.xcconfig"; path = "Target Support Files/Pods-TeraSystemsExercise/Pods-TeraSystemsExercise.release.xcconfig"; sourceTree = "<group>"; };
+		CF0B62172660D0310022143F /* FileLeaveCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLeaveCoordinator.swift; sourceTree = "<group>"; };
+		CF0B62192660E5290022143F /* FileLeaveSuccessfulViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLeaveSuccessfulViewController.swift; sourceTree = "<group>"; };
+		CF0B621A2660E5290022143F /* FileLeaveSuccessfulViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FileLeaveSuccessfulViewController.xib; sourceTree = "<group>"; };
+		CF0B621D2660E8230022143F /* FileLeaveSuccessfulViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLeaveSuccessfulViewModel.swift; sourceTree = "<group>"; };
 		CF103C08265B818E00411043 /* MenuTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTabBarCoordinator.swift; sourceTree = "<group>"; };
 		CF103C0A265B821100411043 /* MenuTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTabBarController.swift; sourceTree = "<group>"; };
 		CF103C0E265BAED100411043 /* TimeLogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLogsViewController.swift; sourceTree = "<group>"; };
@@ -227,6 +235,8 @@
 				CF6FA476265F831C006D2C03 /* FileLeaveViewController.swift */,
 				CF6FA477265F831C006D2C03 /* FileLeaveViewController.xib */,
 				CF6FA47B265F90B5006D2C03 /* FileLeaveDelegates.swift */,
+				CF0B62192660E5290022143F /* FileLeaveSuccessfulViewController.swift */,
+				CF0B621A2660E5290022143F /* FileLeaveSuccessfulViewController.xib */,
 			);
 			path = Leaves;
 			sourceTree = "<group>";
@@ -263,6 +273,7 @@
 				CF103C17265BB1F700411043 /* TimeLogsCoordinator.swift */,
 				CF103C2F265CF24E00411043 /* AddTimeLogCoordinator.swift */,
 				CF6FA474265F6EA9006D2C03 /* LeavesCoordinator.swift */,
+				CF0B62172660D0310022143F /* FileLeaveCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -385,6 +396,7 @@
 				CF103C2D265CCDD400411043 /* AddTimeLogSuccessViewModel.swift */,
 				CF6FA470265F6AB2006D2C03 /* LeavesViewModel.swift */,
 				CF6FA47D265F91C1006D2C03 /* FileLeaveViewModel.swift */,
+				CF0B621D2660E8230022143F /* FileLeaveSuccessfulViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -496,6 +508,7 @@
 			files = (
 				CFBA7E832643D20C00FBAA0D /* LoginViewController.xib in Resources */,
 				CF103C26265CC0E000411043 /* AddTimeLogViewController.xib in Resources */,
+				CF0B621C2660E5290022143F /* FileLeaveSuccessfulViewController.xib in Resources */,
 				CFAE4EA22643F24F007C6BCF /* UpdateProfileViewController.xib in Resources */,
 				CFBA7E592643CF9200FBAA0D /* LaunchScreen.storyboard in Resources */,
 				CFBA7E562643CF9200FBAA0D /* Assets.xcassets in Resources */,
@@ -605,12 +618,15 @@
 				CF6FA471265F6AB2006D2C03 /* LeavesViewModel.swift in Sources */,
 				CFAE4EBB264917FA007C6BCF /* Coordinator.swift in Sources */,
 				CF103C0C265B821100411043 /* MenuTabBarController.swift in Sources */,
+				CF0B621B2660E5290022143F /* FileLeaveSuccessfulViewController.swift in Sources */,
 				CFAE4EB626453EEF007C6BCF /* ProfileViewModel.swift in Sources */,
 				CFAE4EC3264E6A49007C6BCF /* ProfileCoordinator.swift in Sources */,
 				CFAE4EB2264518ED007C6BCF /* LoginViewModel.swift in Sources */,
+				CF0B621E2660E8230022143F /* FileLeaveSuccessfulViewModel.swift in Sources */,
 				CF103C1C265BB67C00411043 /* TimeLog.swift in Sources */,
 				CFAE4EC5264E6A55007C6BCF /* UpdateCoordinator.swift in Sources */,
 				CF6FA46A265F55E5006D2C03 /* LeavesViewController.swift in Sources */,
+				CF0B62182660D0310022143F /* FileLeaveCoordinator.swift in Sources */,
 				CFAE4EA92644F987007C6BCF /* RequestManager.swift in Sources */,
 				CF6FA47C265F90B5006D2C03 /* FileLeaveDelegates.swift in Sources */,
 				CF103C22265CA86700411043 /* TimeLogDetailsViewModel.swift in Sources */,
