@@ -40,7 +40,7 @@ class FileLeaveSuccessfulViewController: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated: false)
         setupOkButton()
         
-        typeLabel.reactive.text <~ viewModel.leave.map({$0.typeFullValue()})
+        typeLabel.reactive.text <~ viewModel.leave.map({$0.typeValue})
         timeLabel.reactive.text <~ viewModel.leave.map({$0.time})
         startLabel.reactive.text <~ viewModel.leave.map({$0.dateFrom})
         endLabel.reactive.text <~ viewModel.leave.map({$0.dateTo})
@@ -66,8 +66,13 @@ class FileLeaveSuccessfulViewController: UIViewController {
             Utilities.showGenericOkAlert(title: nil, message: message) { _ in
                 self.delegate?.closeFileLeave(reloadLeaves: true)
             }
-        } actionOnFail: { message in
-            Utilities.showGenericOkAlert(title: nil, message: message)
+        } actionOnFail: { [weak self] message in
+            guard let self = self else {
+                return
+            }
+            Utilities.showGenericOkAlert(title: nil, message: message) { _ in
+                self.delegate?.closeFileLeave(reloadLeaves: true)
+            }
         }
         
         self.okButton.reactive.pressed = CocoaAction(viewModel.fileLeave(completionObserver: completionObserver))

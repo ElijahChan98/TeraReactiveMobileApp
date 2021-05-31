@@ -51,15 +51,14 @@ class FileLeaveSuccessfulViewModel {
 }
 
 extension Leaves {
-    func typeFullValue() -> String {
-        if self.typeValue == "VL" {
+    var typeValue: String {
+        switch typeAbbreviation {
+        case "VL":
             return "Vacation Leave"
-        }
-        else if self.typeValue == "SL" {
+        case "SL":
             return "Sick Leave"
-        }
-        else {
-            return "Error Type"
+        default:
+            return "N/A"
         }
     }
 }

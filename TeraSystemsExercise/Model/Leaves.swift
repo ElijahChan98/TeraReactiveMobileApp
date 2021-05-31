@@ -19,7 +19,7 @@ struct Leaves: Codable{
     var dateTo: String?
     var time: String
     
-    var typeValue: String {
+    var typeAbbreviation: String {
         switch type {
         case "1":
             return "VL"

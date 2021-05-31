@@ -38,6 +38,11 @@ class LeavesViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(UINib(nibName: "LeaveDetailCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        
+        reloadTableView()
+    }
+    
+    func reloadTableView() {
         self.viewModel.getLeaves {
             self.tableView.reloadData()
         }
@@ -83,7 +88,7 @@ extension LeavesViewController: UITableViewDelegate, UITableViewDataSource {
                 return $0?.dateFrom.stringDate(in: "MM/dd/yyyy", out: "MMMM d") ?? "N/A"
             }
         })
-        cell.typeLabel.reactive.text <~ leaves.map({$0?.typeValue ?? "N/A"})
+        cell.typeLabel.reactive.text <~ leaves.map({$0?.typeAbbreviation ?? "N/A"})
         cell.daysLabel.reactive.text <~ leaves.map({$0?.totalNumberOfDays()})
         return cell
     }

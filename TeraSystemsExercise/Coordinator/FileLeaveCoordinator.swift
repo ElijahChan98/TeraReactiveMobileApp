@@ -26,21 +26,13 @@ class FileLeaveCoordinator: Coordinator {
         self.navigationController = nav
         parent?.navigationController.present(nav, animated: true, completion: nil)
     }
-    
-    func childDidFinish(_ child: Coordinator?) {
-        for (index, coordinator) in childCoordinators.enumerated() {
-            if coordinator === child {
-                childCoordinators.remove(at: index)
-            }
-        }
-    }
 }
 
 extension FileLeaveCoordinator: FileLeaveDelegate {
     func closeFileLeave(reloadLeaves: Bool) {
         parent?.navigationController.dismiss(animated: true) { [weak self] in
             if reloadLeaves {
-                //self?.parent?.reloadLogs()
+                self?.parent?.reloadLeaves()
             }
             self?.parent?.childDidFinish(self)
         }

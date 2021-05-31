@@ -31,6 +31,10 @@ class LeavesCoordinator: Coordinator {
             }
         }
     }
+    
+    func reloadLeaves() {
+        leavesVC.reloadTableView()
+    }
 }
 
 extension LeavesCoordinator: LeavesDelegate {

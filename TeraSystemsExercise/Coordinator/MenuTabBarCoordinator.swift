@@ -54,7 +54,7 @@ class MenuTabBarCoordinator: Coordinator {
         leavesCoordinator.start()
         leavesCoordinator.parent = self
         
-        let leavesItem = UITabBarItem(title: "Leaves", image: nil, selectedImage: nil)
+        let leavesItem = UITabBarItem(title: "Leaves", image: UIImage(named: "leaves"), selectedImage: nil)
         navigationController.tabBarItem = leavesItem
         
         viewControllers.append(navigationController)
