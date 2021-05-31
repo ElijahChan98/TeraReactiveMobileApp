@@ -51,10 +51,20 @@ class AddTimeLogViewController: UIViewController {
     }
     
     @objc func done() {
-        guard let type = typeTextField.text, type.count > 0 else {
+        guard let type = typeTextField.text else {
             return
         }
-        self.delegate?.addTimeLogDone(type: type, time: viewModel.getCurrentTime())
+        
+        let completionObserver = viewModel.addTimeLogResponseObserver { [weak self] _ in
+            guard let self = self else {return}
+            self.delegate?.addTimeLogDone(type: type, time: self.viewModel.getCurrentTime())
+        } actionOnFail: { message in
+            Utilities.showGenericOkAlert(title: nil, message: message)
+        }
+        
+        let addTimeLogAction = viewModel.addTimeLog(completionObserver: completionObserver)
+        
+        addTimeLogAction.apply().start()
     }
     
     @objc func cancel() {
@@ -77,6 +87,7 @@ extension AddTimeLogViewController: UIPickerViewDelegate, UIPickerViewDataSource
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         typeTextField.text = viewModel.timeLogTypes[row]
+        viewModel.type.value = viewModel.timeLogTypes[row]
         pickerView.isHidden = true
     }
 }

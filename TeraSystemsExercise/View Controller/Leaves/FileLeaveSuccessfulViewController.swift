@@ -60,16 +60,12 @@ class FileLeaveSuccessfulViewController: UIViewController {
     
     func setupOkButton() {
         let completionObserver = viewModel.fileLeaveResponseObserver { [weak self] message in
-            guard let self = self else {
-                return
-            }
+            guard let self = self else {return}
             Utilities.showGenericOkAlert(title: nil, message: message) { _ in
                 self.delegate?.closeFileLeave(reloadLeaves: true)
             }
         } actionOnFail: { [weak self] message in
-            guard let self = self else {
-                return
-            }
+            guard let self = self else {return}
             Utilities.showGenericOkAlert(title: nil, message: message) { _ in
                 self.delegate?.closeFileLeave(reloadLeaves: true)
             }

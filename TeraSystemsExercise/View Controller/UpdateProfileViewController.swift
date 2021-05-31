@@ -78,9 +78,7 @@ class UpdateProfileViewController: UIViewController {
     
     func setupUpdateButton() {
         let completionObserver = viewModel.updateResponseObserver { [weak self] message in
-            guard let self = self else {
-                return
-            }
+            guard let self = self else {return}
             self.delegate?.successUpdate(updatedUser: self.viewModel.user)
             self.activityIndicator.stopAnimating()
         } actionOnFail: { [weak self] message in

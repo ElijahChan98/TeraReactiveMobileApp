@@ -36,18 +36,16 @@ class AddTimeLogSuccessViewController: UIViewController {
     }
     
     func setupOkButton() {
-        let completionObserver = viewModel.addTimeLogResponseObserver { [weak self] message in
-            guard let self = self else {
-                return
+        var action: Action<Void, Void, Never> {
+            return Action<Void, Void, Never> {
+                return SignalProducer<Void, Never> { [weak self] observer, lifetime in
+                    self?.delegate?.closeAddTimeLog(reloadLogs: true)
+                    observer.sendCompleted()
+                }
             }
-            Utilities.showGenericOkAlert(title: nil, message: message) { _ in
-                self.delegate?.closeAddTimeLog(reloadLogs: true)
-            }
-        } actionOnFail: { message in
-            Utilities.showGenericOkAlert(title: nil, message: message)
         }
         
-        self.okButton.reactive.pressed = CocoaAction(viewModel.addTimeLog(completionObserver: completionObserver))
+        self.okButton.reactive.pressed = CocoaAction(action)
     }
 }
 

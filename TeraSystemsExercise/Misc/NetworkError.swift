@@ -8,14 +8,14 @@
 import UIKit
 
 enum NetworkError: Error {
-    case failed(_ message: String? = "Something went wrong, please try again later")
+    case failed(_ message: String?)
 }
 
 extension NetworkError: CustomStringConvertible {
     public var description: String {
         switch self {
         case .failed(let message):
-            return message!
+            return message ?? "Something went wrong, please try again later"
         }
     }
 }
