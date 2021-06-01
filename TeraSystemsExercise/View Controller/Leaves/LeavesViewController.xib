@@ -13,12 +13,9 @@
             <connections>
                 <outlet property="dateContainerView" destination="p5V-kN-MmD" id="ASK-3Q-QES"/>
                 <outlet property="leavesRemainingContainerView" destination="bVi-yr-Y3b" id="SyD-iq-XrK"/>
+                <outlet property="leavesRemainingTableView" destination="n9W-n9-tUT" id="sBx-HA-Wm8"/>
                 <outlet property="leavesUsedContainerView" destination="T3x-Oa-aGe" id="Sek-Mr-AKQ"/>
-                <outlet property="sickLeaveContainerView" destination="Kma-q6-Avg" id="gn0-YR-Cjv"/>
-                <outlet property="sickLeavesRemainingLabel" destination="3AJ-py-DBL" id="19f-Ad-ITw"/>
                 <outlet property="tableView" destination="PS0-zM-ygv" id="IGS-Zh-UkM"/>
-                <outlet property="vacationLeaveContainerView" destination="w81-zO-shc" id="isf-go-BbZ"/>
-                <outlet property="vacationLeavesRemainingLabel" destination="1xX-Y1-ciU" id="ZoW-FI-hw5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -44,48 +41,8 @@
                         <constraint firstItem="pKZ-go-Puw" firstAttribute="leading" secondItem="bVi-yr-Y3b" secondAttribute="leading" constant="20" id="aKJ-qU-Dez"/>
                     </constraints>
                 </view>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="w81-zO-shc">
-                    <rect key="frame" x="0.0" y="84" width="414" height="50"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vacation Leave" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Csb-vF-jEg">
-                            <rect key="frame" x="0.0" y="0.0" width="207" height="50"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xX-Y1-ciU">
-                            <rect key="frame" x="207" y="0.0" width="207" height="50"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="DC0-Xq-hC4"/>
-                    </constraints>
-                </stackView>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Kma-q6-Avg">
-                    <rect key="frame" x="0.0" y="134" width="414" height="50"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sick Leave" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaR-C0-2Hb">
-                            <rect key="frame" x="0.0" y="0.0" width="207" height="50"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AJ-py-DBL">
-                            <rect key="frame" x="207" y="0.0" width="207" height="50"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="F8C-sd-bb9"/>
-                    </constraints>
-                </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T3x-Oa-aGe">
-                    <rect key="frame" x="0.0" y="184" width="414" height="60"/>
+                    <rect key="frame" x="0.0" y="166" width="414" height="60"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leaves Used: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ls3-07-6n7">
                             <rect key="frame" x="20" y="19.5" width="112" height="21.5"/>
@@ -102,7 +59,7 @@
                     </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="p5V-kN-MmD">
-                    <rect key="frame" x="0.0" y="244" width="414" height="30"/>
+                    <rect key="frame" x="0.0" y="226" width="414" height="30"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tap-rM-jVQ">
                             <rect key="frame" x="0.0" y="0.0" width="207" height="30"/>
@@ -121,9 +78,16 @@
                         <constraint firstAttribute="height" constant="30" id="qwD-kZ-dyp"/>
                     </constraints>
                 </stackView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PS0-zM-ygv">
-                    <rect key="frame" x="0.0" y="274" width="414" height="588"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PS0-zM-ygv">
+                    <rect key="frame" x="0.0" y="256" width="414" height="606"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="n9W-n9-tUT">
+                    <rect key="frame" x="0.0" y="84" width="414" height="82"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="82" id="zrz-qJ-WXW"/>
+                    </constraints>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -131,25 +95,22 @@
             <constraints>
                 <constraint firstItem="T3x-Oa-aGe" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="16G-8d-8Jw"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bVi-yr-Y3b" secondAttribute="trailing" id="1dA-Mz-OHf"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="n9W-n9-tUT" secondAttribute="trailing" id="37D-kg-a0D"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="PS0-zM-ygv" secondAttribute="trailing" id="70x-io-dmc"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="w81-zO-shc" secondAttribute="trailing" id="A84-qc-HBh"/>
+                <constraint firstItem="T3x-Oa-aGe" firstAttribute="top" secondItem="n9W-n9-tUT" secondAttribute="bottom" id="7aM-hU-drf"/>
                 <constraint firstItem="T3x-Oa-aGe" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="FAP-Lb-9Ri"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="PS0-zM-ygv" secondAttribute="bottom" id="Mxe-71-snG"/>
                 <constraint firstItem="bVi-yr-Y3b" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="OVF-Y5-dcx"/>
-                <constraint firstItem="w81-zO-shc" firstAttribute="top" secondItem="bVi-yr-Y3b" secondAttribute="bottom" id="Tsc-bI-Opo"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="p5V-kN-MmD" secondAttribute="trailing" id="Vmk-r1-R9l"/>
-                <constraint firstItem="T3x-Oa-aGe" firstAttribute="top" secondItem="Kma-q6-Avg" secondAttribute="bottom" id="ZUh-Jd-CXc"/>
+                <constraint firstItem="n9W-n9-tUT" firstAttribute="top" secondItem="bVi-yr-Y3b" secondAttribute="bottom" id="Wiw-4I-nNM"/>
+                <constraint firstItem="n9W-n9-tUT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="agy-iP-LSA"/>
                 <constraint firstItem="PS0-zM-ygv" firstAttribute="top" secondItem="p5V-kN-MmD" secondAttribute="bottom" id="fOD-W1-qF0"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Kma-q6-Avg" secondAttribute="trailing" id="jgF-Mc-jgW"/>
                 <constraint firstItem="PS0-zM-ygv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="koG-nw-ST3"/>
-                <constraint firstItem="Kma-q6-Avg" firstAttribute="top" secondItem="w81-zO-shc" secondAttribute="bottom" id="lCH-Nz-kHe"/>
-                <constraint firstItem="w81-zO-shc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mtK-tx-RQZ"/>
                 <constraint firstItem="p5V-kN-MmD" firstAttribute="top" secondItem="T3x-Oa-aGe" secondAttribute="bottom" id="nqJ-9g-wvK"/>
                 <constraint firstItem="bVi-yr-Y3b" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xDA-zH-wkF"/>
                 <constraint firstItem="p5V-kN-MmD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xem-7z-Fw2"/>
-                <constraint firstItem="Kma-q6-Avg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="y1P-nK-EaE"/>
             </constraints>
-            <point key="canvasLocation" x="-17" y="84"/>
+            <point key="canvasLocation" x="-17.39130434782609" y="83.705357142857139"/>
         </view>
     </objects>
     <resources>

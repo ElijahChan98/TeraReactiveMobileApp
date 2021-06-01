@@ -7,6 +7,12 @@
 
 import UIKit
 
+enum LeaveType: String {
+    case WholeDay = "Whole Day"
+    case Afternoon = "Afternoon"
+    case Morning = "Morning"
+}
+
 struct Leaves: Codable{
     enum CodingKeys: String, CodingKey {
         case type
@@ -32,11 +38,11 @@ struct Leaves: Codable{
     
     var timeValue: String {
         switch time {
-        case "Whole Day":
+        case LeaveType.WholeDay.rawValue:
             return "1"
-        case "Afternoon":
+        case LeaveType.Afternoon.rawValue:
             return "2"
-        case "Morning":
+        case LeaveType.Morning.rawValue:
             return "3"
         default:
             return "0"

@@ -83,6 +83,7 @@ extension TimeLogsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.outLabel.reactive.textColor <~ timeLog.map({
             $0?.timeOut == nil ? UIColor.red : UIColor.black
         })
+        cell.selectionStyle = .none
         return cell
     }
     

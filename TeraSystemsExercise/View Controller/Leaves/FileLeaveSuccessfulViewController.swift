@@ -59,19 +59,16 @@ class FileLeaveSuccessfulViewController: UIViewController {
     }
     
     func setupOkButton() {
-        let completionObserver = viewModel.fileLeaveResponseObserver { [weak self] message in
-            guard let self = self else {return}
-            Utilities.showGenericOkAlert(title: nil, message: message) { _ in
-                self.delegate?.closeFileLeave(reloadLeaves: true)
-            }
-        } actionOnFail: { [weak self] message in
-            guard let self = self else {return}
-            Utilities.showGenericOkAlert(title: nil, message: message) { _ in
-                self.delegate?.closeFileLeave(reloadLeaves: true)
+        var action: Action<Void, Void, Never> {
+            return Action<Void, Void, Never> {
+                return SignalProducer<Void, Never> { [weak self] observer, lifetime in
+                    self?.delegate?.closeFileLeave(reloadLeaves: true)
+                    observer.sendCompleted()
+                }
             }
         }
         
-        self.okButton.reactive.pressed = CocoaAction(viewModel.fileLeave(completionObserver: completionObserver))
+        self.okButton.reactive.pressed = CocoaAction(action)
     }
 
 }

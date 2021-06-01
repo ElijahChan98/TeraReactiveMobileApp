@@ -57,14 +57,14 @@ class TimeLogDetailsViewController: UIViewController {
                 $0.timeOut == nil ? UIColor.red : UIColor.black
             })
             
-            self.breakIn.reactive.text <~ timeLog.map({$0.breakIn?.stringDate(in: "HH:mm:ss", out: "h:mm a") ?? "N/A"})
-            self.breakIn.reactive.textColor <~ timeLog.map({
-                $0.breakIn == nil ? UIColor.red : UIColor.black
-            })
-            
             self.breakOut.reactive.text <~ timeLog.map({$0.breakOut?.stringDate(in: "HH:mm:ss", out: "h:mm a") ?? "N/A"})
             self.breakOut.reactive.textColor <~ timeLog.map({
                 $0.breakOut == nil ? UIColor.red : UIColor.black
+            })
+            
+            self.breakIn.reactive.text <~ timeLog.map({$0.breakIn?.stringDate(in: "HH:mm:ss", out: "h:mm a") ?? "N/A"})
+            self.breakIn.reactive.textColor <~ timeLog.map({
+                $0.breakIn == nil ? UIColor.red : UIColor.black
             })
         }
     }

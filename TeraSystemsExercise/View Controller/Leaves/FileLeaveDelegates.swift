@@ -24,11 +24,11 @@ class TimePickerDelegateController: NSObject, UIPickerViewDelegate, UIPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return viewModel.choices[row]
+        return viewModel.choices[row].rawValue
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.delegate?.timePickerDidSelect(choice: viewModel.choices[row])
+        self.delegate?.timePickerDidSelect(choice: viewModel.choices[row].rawValue)
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {

@@ -10,13 +10,12 @@ import ReactiveSwift
 
 class LeavesViewController: UIViewController {
     @IBOutlet weak var leavesRemainingContainerView: UIView!
-    @IBOutlet weak var vacationLeaveContainerView: UIStackView!
-    @IBOutlet weak var vacationLeavesRemainingLabel: UILabel!
-    @IBOutlet weak var sickLeaveContainerView: UIStackView!
-    @IBOutlet weak var sickLeavesRemainingLabel: UILabel!
     @IBOutlet weak var leavesUsedContainerView: UIView!
     @IBOutlet weak var dateContainerView: UIStackView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var leavesRemainingTableView: UITableView!
+    
+    var leavesRemainingController: LeavesRemainingTableController!
     
     var viewModel: LeavesViewModel!
     weak var delegate: LeavesDelegate?
@@ -34,10 +33,15 @@ class LeavesViewController: UIViewController {
         super.viewDidLoad()
         setupNavigationBar()
         setupViews()
+        self.leavesRemainingController = LeavesRemainingTableController(viewModel: self.viewModel)
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(UINib(nibName: "LeaveDetailCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        
+        self.leavesRemainingTableView.delegate = leavesRemainingController
+        self.leavesRemainingTableView.dataSource = leavesRemainingController
+        self.leavesRemainingTableView.register(UINib(nibName: "RemainingLeavesCell", bundle: nil), forCellReuseIdentifier: "Cell")
         
         reloadTableView()
     }
@@ -45,6 +49,7 @@ class LeavesViewController: UIViewController {
     func reloadTableView() {
         self.viewModel.getLeaves {
             self.tableView.reloadData()
+            self.leavesRemainingTableView.reloadData()
         }
     }
     
@@ -52,11 +57,11 @@ class LeavesViewController: UIViewController {
         leavesRemainingContainerView.addTopBorder(with: UIColor.gray, andWidth: 0.5)
         leavesRemainingContainerView.addBottomBorder(with: UIColor.gray, andWidth: 0.5)
         
-        sickLeaveContainerView.addTopBorder(with: UIColor.gray, andWidth: 0.5)
-        sickLeaveContainerView.addBottomBorder(with: UIColor.gray, andWidth: 0.5)
+        leavesUsedContainerView.addTopBorder(with: .gray, andWidth: 0.5)
         
         dateContainerView.addTopBorder(with: UIColor.gray, andWidth: 0.5)
         dateContainerView.addBottomBorder(with: UIColor.gray, andWidth: 0.5)
+        
     }
     
     func setupNavigationBar() {

@@ -59,6 +59,7 @@ class FileLeaveViewController: UIViewController {
             self?.startDatePickerViewHeightConstraint.constant = 0
             self?.startDateTextField.resignFirstResponder()
             self?.startDateTextField.isUserInteractionEnabled = true
+            self?.endDatePickerView.minimumDate = $0.date
             
             return self?.formatter.string(from: $0.date) ?? ""
         })
@@ -72,7 +73,7 @@ class FileLeaveViewController: UIViewController {
     }
     
     func setupEndDateViews() {
-        endDatePickerView.minimumDate = Date()
+        endDatePickerView.minimumDate = startDatePickerView.date
         viewModel.endDate.value = formatter.string(from: Date()) //setup default value
         viewModel.endDate <~ endDatePickerView.reactive.mapControlEvents(.valueChanged, { [weak self] in
             self?.endDatePickerViewHeightConstraint.constant = 0
@@ -125,6 +126,7 @@ class FileLeaveViewController: UIViewController {
         
         let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.done))
         doneButton.tintColor = UIColor.white
+        doneButton.reactive.isEnabled <~ viewModel.doneButtonEnabled
         navigationItem.rightBarButtonItem = doneButton
         
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancel))
@@ -136,7 +138,16 @@ class FileLeaveViewController: UIViewController {
     }
     
     @objc func done() {
-        self.delegate?.fileLeaveDone(leave: viewModel.leave)
+        let completionObserver = viewModel.fileLeaveResponseObserver { [weak self] message in
+            guard let self = self else {return}
+            Utilities.showGenericOkAlert(title: nil, message: message) { _ in
+                self.delegate?.fileLeaveDone(leave: self.viewModel.leave)
+            }
+        } actionOnFail: { message in
+            Utilities.showGenericOkAlert(title: nil, message: message)
+        }
+        let action = viewModel.fileLeave(completionObserver: completionObserver)
+        action.apply().start()
     }
     
     @objc func cancel() {
@@ -146,7 +157,7 @@ class FileLeaveViewController: UIViewController {
 
 extension FileLeaveViewController: TimePickerDelegate {
     func timePickerDidSelect(choice: String) {
-        if choice != "Whole Day" {
+        if choice != LeaveType.WholeDay.rawValue {
             endDatePickerContainerView.isHidden = true
             startDateLabel.text = "Date"
         }
