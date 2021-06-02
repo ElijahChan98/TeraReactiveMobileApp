@@ -28,6 +28,8 @@ class FileLeaveViewController: UIViewController {
     @IBOutlet weak var timePickerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var startDatePickerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var endDatePickerViewHeightConstraint: NSLayoutConstraint!
+    var activityIndicator: UIActivityIndicatorView!
+    var doneButton: UIBarButtonItem!
     
     weak var delegate: FileLeaveDelegate?
     var viewModel: FileLeaveViewModel!
@@ -59,7 +61,6 @@ class FileLeaveViewController: UIViewController {
             self?.startDatePickerViewHeightConstraint.constant = 0
             self?.startDateTextField.resignFirstResponder()
             self?.startDateTextField.isUserInteractionEnabled = true
-            self?.endDatePickerView.minimumDate = $0.date
             
             return self?.formatter.string(from: $0.date) ?? ""
         })
@@ -124,10 +125,13 @@ class FileLeaveViewController: UIViewController {
         self.navigationItem.backBarButtonItem = item
         self.navigationItem.backBarButtonItem?.tintColor = UIColor.white
         
-        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.done))
+        doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.done))
         doneButton.tintColor = UIColor.white
         doneButton.reactive.isEnabled <~ viewModel.doneButtonEnabled
         navigationItem.rightBarButtonItem = doneButton
+        
+        activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.hidesWhenStopped = true
         
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancel))
         cancelButton.tintColor = UIColor.white
@@ -138,13 +142,23 @@ class FileLeaveViewController: UIViewController {
     }
     
     @objc func done() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.activityIndicator)
+        self.activityIndicator.startAnimating()
+        
         let completionObserver = viewModel.fileLeaveResponseObserver { [weak self] message in
             guard let self = self else {return}
             Utilities.showGenericOkAlert(title: nil, message: message) { _ in
                 self.delegate?.fileLeaveDone(leave: self.viewModel.leave)
+                
+                self.navigationItem.rightBarButtonItem = self.doneButton
+                self.activityIndicator.stopAnimating()
             }
-        } actionOnFail: { message in
+        } actionOnFail: { [weak self] message in
+            guard let self = self else {return}
             Utilities.showGenericOkAlert(title: nil, message: message)
+            
+            self.navigationItem.rightBarButtonItem = self.doneButton
+            self.activityIndicator.stopAnimating()
         }
         let action = viewModel.fileLeave(completionObserver: completionObserver)
         action.apply().start()

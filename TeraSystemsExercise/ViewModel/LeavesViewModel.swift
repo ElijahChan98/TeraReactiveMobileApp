@@ -12,7 +12,8 @@ class LeavesViewModel {
     private var maxSickLeaves = 13.0
     private var maxVacationLeaves = 15.0
     var leaves: [MutableProperty<Leaves?>]?
-    var remainingLeaves = MutableProperty<[[String : String]]>([[:]])
+    var remainingLeaves = MutableProperty<[[String : String]]?>( [[:],
+                                                                  [:]] )
     private var totalSickLeaves: String = ""
     private var totalVacationLeaves: String = ""
     

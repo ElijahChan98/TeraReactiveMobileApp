@@ -9,13 +9,9 @@ import UIKit
 import ReactiveSwift
 
 class LeavesViewController: UIViewController {
-    @IBOutlet weak var leavesRemainingContainerView: UIView!
-    @IBOutlet weak var leavesUsedContainerView: UIView!
-    @IBOutlet weak var dateContainerView: UIStackView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var leavesRemainingTableView: UITableView!
-    
-    var leavesRemainingController: LeavesRemainingTableController!
+    var activityIndicator: UIActivityIndicatorView!
+    var addButton: UIBarButtonItem!
     
     var viewModel: LeavesViewModel!
     weak var delegate: LeavesDelegate?
@@ -32,44 +28,38 @@ class LeavesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
-        setupViews()
-        self.leavesRemainingController = LeavesRemainingTableController(viewModel: self.viewModel)
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.register(UINib(nibName: "LeaveDetailCell", bundle: nil), forCellReuseIdentifier: "Cell")
         
-        self.leavesRemainingTableView.delegate = leavesRemainingController
-        self.leavesRemainingTableView.dataSource = leavesRemainingController
-        self.leavesRemainingTableView.register(UINib(nibName: "RemainingLeavesCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        self.tableView.register(UINib(nibName: "LeaveDetailCell", bundle: nil), forCellReuseIdentifier: "leavesUsedCell")
+        self.tableView.register(UINib(nibName: "RemainingLeavesCell", bundle: nil), forCellReuseIdentifier: "leavesRemainingCell")
+        self.tableView.register(UINib(nibName: "LeavesRemainingHeaderCell", bundle: nil), forCellReuseIdentifier: "leavesRemainingHeader")
+        self.tableView.register(UINib(nibName: "LeavesUsedHeaderCell", bundle: nil), forCellReuseIdentifier: "leavesUsedHeader")
         
         reloadTableView()
     }
     
     func reloadTableView() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
+        activityIndicator.startAnimating()
+        
         self.viewModel.getLeaves {
             self.tableView.reloadData()
-            self.leavesRemainingTableView.reloadData()
+            self.navigationItem.rightBarButtonItem = self.addButton
+            self.activityIndicator.stopAnimating()
         }
-    }
-    
-    func setupViews() {
-        leavesRemainingContainerView.addTopBorder(with: UIColor.gray, andWidth: 0.5)
-        leavesRemainingContainerView.addBottomBorder(with: UIColor.gray, andWidth: 0.5)
-        
-        leavesUsedContainerView.addTopBorder(with: .gray, andWidth: 0.5)
-        
-        dateContainerView.addTopBorder(with: UIColor.gray, andWidth: 0.5)
-        dateContainerView.addBottomBorder(with: UIColor.gray, andWidth: 0.5)
-        
     }
     
     func setupNavigationBar() {
         self.navigationItem.title = "Leaves"
         
-        let addButton = UIBarButtonItem(title: "+", style: .done, target: self, action: #selector(self.fileLeave))
+        addButton = UIBarButtonItem(title: "+", style: .done, target: self, action: #selector(self.fileLeave))
         addButton.tintColor = UIColor.white
         navigationItem.rightBarButtonItem = addButton
+        
+        activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.hidesWhenStopped = true
         
         self.navigationController?.navigationBar.barTintColor = UIColor.systemBlue
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
@@ -81,35 +71,79 @@ class LeavesViewController: UIViewController {
 }
 extension LeavesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! LeaveDetailCell
-        guard let leaves = viewModel.leaves?[indexPath.row] else {
-            return UITableViewCell()
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "leavesRemainingCell", for: indexPath) as! RemainingLeavesCell
+            guard let leave = viewModel.remainingLeaves.value?[indexPath.row] else {
+                return UITableViewCell()
+            }
+            
+            for (type, amount) in leave {
+                cell.type.text = type
+                cell.amount.text = amount
+            }
+            return cell
         }
-        cell.dateLabel.reactive.text <~ leaves.map({
-            if let dateTo = $0?.dateTo, let dateFrom = $0?.dateFrom {
-                return "\(dateFrom.stringDate(in: "MM/dd/yyyy", out: "MMMM d")) to \(dateTo.stringDate(in: "MM/dd/yyyy", out: "MMMM d"))"
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "leavesUsedCell", for: indexPath) as! LeaveDetailCell
+            guard let leaves = viewModel.leaves?[indexPath.row] else {
+                return UITableViewCell()
             }
-            else {
-                return $0?.dateFrom.stringDate(in: "MM/dd/yyyy", out: "MMMM d") ?? "N/A"
-            }
-        })
-        cell.typeLabel.reactive.text <~ leaves.map({$0?.typeAbbreviation ?? "N/A"})
-        cell.daysLabel.reactive.text <~ leaves.map({$0?.totalNumberOfDays()})
-        return cell
+            cell.dateLabel.reactive.text <~ leaves.map({
+                if let dateTo = $0?.dateTo, let dateFrom = $0?.dateFrom {
+                    return "\(dateFrom.stringDate(in: "MM/dd/yyyy", out: "MMMM d")) to \(dateTo.stringDate(in: "MM/dd/yyyy", out: "MMMM d"))"
+                }
+                else {
+                    return $0?.dateFrom.stringDate(in: "MM/dd/yyyy", out: "MMMM d") ?? "N/A"
+                }
+            })
+            cell.typeLabel.reactive.text <~ leaves.map({$0?.typeAbbreviation ?? "N/A"})
+            cell.daysLabel.reactive.text <~ leaves.map({$0?.totalNumberOfDays()})
+            return cell
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.leaves?.count ?? 0
+        if section == 0 {
+            return viewModel.remainingLeaves.value?.count ?? 0
+        }
+        else {
+            return viewModel.leaves?.count ?? 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            let headerCell = tableView.dequeueReusableCell(withIdentifier: "leavesRemainingHeader") as! LeavesRemainingHeaderCell
+            return headerCell
+        }
+        else if section == 1 {
+            let headerCell = tableView.dequeueReusableCell(withIdentifier: "leavesUsedHeader") as! LeavesUsedHeaderCell
+            return headerCell
+        }
+        return nil
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70.0
+        if indexPath.section == 0 {
+            return 41.0
+        }
+        else {
+            return 70.0
+        }
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 60.0
+        }
+        else {
+            return 85.0
+        }
+    }
 }
 
 protocol LeavesDelegate: AnyObject {

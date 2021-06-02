@@ -50,7 +50,7 @@ class FileLeaveViewModel {
         return Property.combineLatest(startDate, endDate, timeSpan).map { start, end, span in
             let formatter = DateFormatter()
             formatter.dateFormat = "MMMM d, yyyy"
-            return span != LeaveType.WholeDay.rawValue || formatter.date(from: start)! < formatter.date(from: end)!
+            return span != LeaveType.WholeDay.rawValue || formatter.date(from: start)! <= formatter.date(from: end)!
         }
     }
     
